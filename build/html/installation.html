@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installtion: &#8212; realHTML4Natural 1.0 documentation</title>
+    <title>Build process and Installation &#8212; realHTML4Natural 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -26,6 +26,8 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="top" title="realHTML4Natural 1.0 documentation" href="index.html" />
+    <link rel="next" title="Webserver" href="webserver.html" />
+    <link rel="prev" title="realHTML4Natural Documentation" href="index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -41,9 +43,35 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="installtion">
-<h1>Installtion:<a class="headerlink" href="#installtion" title="Permalink to this headline">¶</a></h1>
-<p>Placeholder</p>
+  <div class="section" id="build-process-and-installation">
+<h1>Build process and Installation<a class="headerlink" href="#build-process-and-installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="build">
+<h2>Build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h2>
+<p>Unfortunately the build process is currently very manual.
+The libraries under the folder &#8220;libs&#8221; are build with the Makefile in the root directory. Except the library &#8220;mxml&#8221;, it have it&#8217;s own makefile.
+The rest of the libraries outside of &#8220;libs&#8221; has there own makefiles.
+So you have to edit the following Makefiles and change the $CC variable to your compiler (where ./ is the root folder from the repository):</p>
+<ul class="simple">
+<li>./web_server/Makefile</li>
+<li>./var2names/Makefile</li>
+<li>./libs/mxml/Makefile</li>
+<li>./Makefile</li>
+<li>./Makedyn</li>
+</ul>
+<p>You also have to have the shared object &#8220;libnatural.so&#8221; from the SoftwareAG in your &#8220;LIBPATH&#8221; Environment variable. It should be located in your natural bin directory.
+Now you should be able to just type in &#8220;make all&#8221; in the root folder and the complete project will be build in the right order.</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>There is no real installation yet but there are just two core binaries to copy:</p>
+<ul class="simple">
+<li>./jinja2.so</li>
+<li>./web_server/miniweb</li>
+</ul>
+<p>&#8220;jinja.so&#8221; is the shared object which provides the INTERFACE 4 functions &#8220;genpage&#8221; and &#8220;flipbuf&#8221;. It must be mentioned in your NATUSER Env-var.</p>
+<p>&#8220;miniweb&#8221; is the web server. It is good practice to put it into your &#8220;/usr/bin/&#8221; folder so it is in your PATH variable and can be found by just typing &#8220;miniweb&#8221;. The configuration files for the server you can put everywhere.
+I am a fan of creating a directory in &#8220;/etc&#8221; which is called &#8220;realHTML4Natural&#8221; and putting all the configuration stuff into there.</p>
+</div>
 </div>
 
 
@@ -51,10 +79,21 @@
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><div class="relations">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Build process and Installation</a><ul>
+<li><a class="reference internal" href="#build">Build</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">realHTML4Natural Documentation</a></li>
+      <li>Next: <a href="webserver.html" title="next chapter">Webserver</a></li>
   </ul></li>
 </ul>
 </div>

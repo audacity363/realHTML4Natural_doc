@@ -2,7 +2,7 @@ Build process and Installation
 ===============================
 
 Build
-^^^^^
+^^^^^^
 
 Unfortunately the build process is currently very manual.
 The libraries under the folder "libs" are build with the Makefile in the root directory. Except the library "mxml", it have it's own makefile. 
@@ -19,7 +19,7 @@ You also have to have the shared object "libnatural.so" from the SoftwareAG in y
 Now you should be able to just type in "make all" in the root folder and the complete project will be build in the right order.
 
 Installation
-^^^^^^^^^^^^
+^^^^^^^^^^^^^^
 
 There is no real installation yet but there are just two core binaries to copy:
 
