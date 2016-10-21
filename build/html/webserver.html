@@ -47,7 +47,7 @@
 <h1>Webserver<a class="headerlink" href="#webserver" title="Permalink to this headline">¶</a></h1>
 <p>The webserver is based on the open source project miniweb (<a class="reference external" href="http://www.http://miniweb.sourceforge.net/">http://www.http://miniweb.sourceforge.net/</a>) but this version is heavily modified.</p>
 <p>This version can parse POST Requests where data is urlencoded and not an multipart message, read cookies and set new ones and of course calling natural programs.</p>
-<p>There are two configuration files that miniweb can use. A general configuration file how the server should be configured and a file which controls when which natural program is called.</p>
+<p>There are two configuration files that miniweb can use. A general configuration file with how the server should be configured and a file which controls when which natural program is called.</p>
 <div class="section" id="server-configuration">
 <h2>Server configuration<a class="headerlink" href="#server-configuration" title="Permalink to this headline">¶</a></h2>
 <p>The path to this file is stored in the environment variable &#8220;WEBCONFIG&#8221;. It can contain multiple environments. For example a configuration for test and one for production.</p>
@@ -122,7 +122,7 @@
 <td>no</td>
 </tr>
 <tr class="row-odd"><td>debug</td>
-<td>decide when an error occurs to render a custom 500 page with the error message or a generic 500 error page</td>
+<td>decide wether an error occurs to render a custom 500 page with the error message or a generic 500 error page</td>
 <td>false</td>
 <td>no</td>
 </tr>
@@ -152,7 +152,7 @@
 </div>
 <div class="section" id="route-configuration">
 <h2>Route configuration<a class="headerlink" href="#route-configuration" title="Permalink to this headline">¶</a></h2>
-<p>In the route configuration file do you enter the natural program which should run when a specific route is called.</p>
+<p>In the route configuration file you enter the natural program which should run when a specific route is called.</p>
 <div class="section" id="id1">
 <h3>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;realHtml&gt;</span>

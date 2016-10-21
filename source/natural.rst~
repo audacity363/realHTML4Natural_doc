@@ -199,36 +199,5 @@ The subprogram
 
    /* your code goes here
 
-   call interface4 "genpage" realhtml_ldaname realhtml_template 
-                             req_file req_settings page
-
-The LDA
--------
-
-.. code-block:: cobolfree
-
-   define data local
-       1 realhtml_ldaname (A20)
-       1 realhtml_template (A20)
-       1 page
-           2 field-1 (A10)
-           2 field-2 (A20)
-   end-define
-
-The PDA
--------
-
-.. code-block:: cobolfree
-
-   DEFINE DATA PARAMETER
-       1 VALUES_REQ (A2024/1:20)
-       1 VALUE_LENGTH (I4/1:20)
-       1 REQ_KEYS (A100/1:20)
-       1 PARM_COUNT (I4)
-       1 REQ_TYPE (A5)
-       1 REQ_FILE (A100)
-       1 REQ_SETTINGS (A) DYNAMIC
-   END-DEFINE
-   
-
+   call interface4 "genpage" lda_name template_name output_file settings page
 

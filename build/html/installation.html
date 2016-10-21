@@ -48,7 +48,7 @@
 <div class="section" id="build">
 <h2>Build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h2>
 <p>Unfortunately the build process is currently very manual.
-The libraries under the folder &#8220;libs&#8221; are build with the Makefile in the root directory. Except the library &#8220;mxml&#8221;, it have it&#8217;s own makefile.
+The libraries in the folder &#8220;libs&#8221; are build with the Makefile in the root directory. Except the library &#8220;mxml&#8221;, it has its own makefile.
 The rest of the libraries outside of &#8220;libs&#8221; has there own makefiles.
 So you have to edit the following Makefiles and change the $CC variable to your compiler (where ./ is the root folder from the repository):</p>
 <ul class="simple">
@@ -69,8 +69,8 @@ Now you should be able to just type in &#8220;make all&#8221; in the root folder
 <li>./web_server/miniweb</li>
 </ul>
 <p>&#8220;jinja.so&#8221; is the shared object which provides the INTERFACE 4 functions &#8220;genpage&#8221; and &#8220;flipbuf&#8221;. It must be mentioned in your NATUSER Env-var.</p>
-<p>&#8220;miniweb&#8221; is the web server. It is good practice to put it into your &#8220;/usr/bin/&#8221; folder so it is in your PATH variable and can be found by just typing &#8220;miniweb&#8221;. The configuration files for the server you can put everywhere.
-I am a fan of creating a directory in &#8220;/etc&#8221; which is called &#8220;realHTML4Natural&#8221; and putting all the configuration stuff into there.</p>
+<p>&#8220;miniweb&#8221; is the web server. It is good practice to put it into your &#8220;/usr/bin/&#8221; folder so it is in your PATH variable and can be found by just typing &#8220;miniweb&#8221;. The configuration files of the server you can put everywhere.
+I am a fan of creating a directory in &#8220;/etc&#8221; which is called &#8220;realHTML4Natural&#8221; and putting all the configuration stuff in there.</p>
 </div>
 </div>
 

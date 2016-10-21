@@ -5,7 +5,7 @@ The webserver is based on the open source project miniweb (http://www.http://min
 
 This version can parse POST Requests where data is urlencoded and not an multipart message, read cookies and set new ones and of course calling natural programs.
 
-There are two configuration files that miniweb can use. A general configuration file how the server should be configured and a file which controls when which natural program is called.
+There are two configuration files that miniweb can use. A general configuration file with how the server should be configured and a file which controls when which natural program is called.
 
 Server configuration
 ^^^^^^^^^^^^^^^^^^^^^
@@ -42,33 +42,33 @@ With the environment tag you can setup multiple environments in which the server
 
 Explanation enviroment childs
 -----------------------------
-+---------------+-------------------------------------------------------------------------------------------------------------+----------------+----------+
-| entry         | explanation                                                                                                 | default Value  | required |
-+===============+=============================================================================================================+================+==========+
-| routes        | the path to the routes configuration file                                                                   | None           | yes      |
-+---------------+-------------------------------------------------------------------------------------------------------------+----------------+----------+
-| htdocs        | the path to the htdocs folder                                                                               | None           | yes      |
-+---------------+-------------------------------------------------------------------------------------------------------------+----------------+----------+
-| templates     | the path to the template folder                                                                             | None           | yes      |
-+---------------+-------------------------------------------------------------------------------------------------------------+----------------+----------+
-| natsourcepath | path to the natural sources (must be the root directory)                                                    | None           | yes      |
-+---------------+-------------------------------------------------------------------------------------------------------------+----------------+----------+
-| port          | port on which the webserver should listen                                                                   | 80             | no       |
-+---------------+-------------------------------------------------------------------------------------------------------------+----------------+----------+
-| debug         | decide when an error occurs to render a custom 500 page with the error message or a generic 500 error page  | false          | no       |
-+---------------+-------------------------------------------------------------------------------------------------------------+----------------+----------+
-| naterror      | the template that should be rendered when natural error occurs (debug must set to true)                     | None           | no       |
-+---------------+-------------------------------------------------------------------------------------------------------------+----------------+----------+
-| ldaerror      | the template that should be rendered when error occurs while parsing the LDA (debug must set to true)       | None           | no       |
-+---------------+-------------------------------------------------------------------------------------------------------------+----------------+----------+
-| parsererror   | the template that should be rendered when error occurs while handling the template (debug must set to true) | None           | no       |
-+---------------+-------------------------------------------------------------------------------------------------------------+----------------+----------+
-| natparms      | parameter that will be passed through to natural (the same as if you were calling natural from the binary)  | None           | no       |
-+---------------+-------------------------------------------------------------------------------------------------------------+----------------+----------+
++---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
+| entry         | explanation                                                                                                   | default Value  | required |
++===============+===============================================================================================================+================+==========+
+| routes        | the path to the routes configuration file                                                                     | None           | yes      |
++---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
+| htdocs        | the path to the htdocs folder                                                                                 | None           | yes      |
++---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
+| templates     | the path to the template folder                                                                               | None           | yes      |
++---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
+| natsourcepath | path to the natural sources (must be the root directory)                                                      | None           | yes      |
++---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
+| port          | port on which the webserver should listen                                                                     | 80             | no       |
++---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
+| debug         | decide wether an error occurs to render a custom 500 page with the error message or a generic 500 error page  | false          | no       |
++---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
+| naterror      | the template that should be rendered when natural error occurs (debug must set to true)                       | None           | no       |
++---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
+| ldaerror      | the template that should be rendered when error occurs while parsing the LDA (debug must set to true)         | None           | no       |
++---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
+| parsererror   | the template that should be rendered when error occurs while handling the template (debug must set to true)   | None           | no       |
++---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
+| natparms      | parameter that will be passed through to natural (the same as if you were calling natural from the binary)    | None           | no       |
++---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
 
 Route configuration
 ^^^^^^^^^^^^^^^^^^^^
-In the route configuration file do you enter the natural program which should run when a specific route is called.
+In the route configuration file you enter the natural program which should run when a specific route is called.
 
 Example
 -------

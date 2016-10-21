@@ -5,7 +5,7 @@ Build
 ^^^^^
 
 Unfortunately the build process is currently very manual.
-The libraries under the folder "libs" are build with the Makefile in the root directory. Except the library "mxml", it have it's own makefile. 
+The libraries in the folder "libs" are build with the Makefile in the root directory. Except the library "mxml", it has its own makefile. 
 The rest of the libraries outside of "libs" has there own makefiles.
 So you have to edit the following Makefiles and change the $CC variable to your compiler (where ./ is the root folder from the repository):
 
@@ -28,5 +28,5 @@ There is no real installation yet but there are just two core binaries to copy:
 
 "jinja.so" is the shared object which provides the INTERFACE 4 functions "genpage" and "flipbuf". It must be mentioned in your NATUSER Env-var. 
 
-"miniweb" is the web server. It is good practice to put it into your "/usr/bin/" folder so it is in your PATH variable and can be found by just typing "miniweb". The configuration files for the server you can put everywhere.
-I am a fan of creating a directory in "/etc" which is called "realHTML4Natural" and putting all the configuration stuff into there.
+"miniweb" is the web server. It is good practice to put it into your "/usr/bin/" folder so it is in your PATH variable and can be found by just typing "miniweb". The configuration files of the server you can put everywhere.
+I am a fan of creating a directory in "/etc" which is called "realHTML4Natural" and putting all the configuration stuff in there.
