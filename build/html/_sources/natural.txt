@@ -40,6 +40,7 @@ Explanation parameter data area
 | req_settings  | just a long string which contains settings from the webserver configuration for the html parser                                                                     |
 +---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
+.. _template-vars:
 
 Variables for the template
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

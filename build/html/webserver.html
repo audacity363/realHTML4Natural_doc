@@ -49,16 +49,16 @@
 <p>This version can parse POST Requests where data is urlencoded and not an multipart message, read cookies and set new ones and of course calling natural programs.</p>
 <p>There are two configuration files that miniweb can use. A general configuration file with how the server should be configured and a file which controls when which natural program is called.</p>
 <div class="section" id="server-configuration">
-<h2>Server configuration<a class="headerlink" href="#server-configuration" title="Permalink to this headline">¶</a></h2>
+<span id="webserver-config"></span><h2>Server configuration<a class="headerlink" href="#server-configuration" title="Permalink to this headline">¶</a></h2>
 <p>The path to this file is stored in the environment variable &#8220;WEBCONFIG&#8221;. It can contain multiple environments. For example a configuration for test and one for production.</p>
 <div class="section" id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;miniweb&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;miniweb&gt;</span>
     <span class="nt">&lt;environment</span> <span class="na">type=</span><span class="s">&quot;test&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;routes&gt;</span>/u/it/a140734/C/realHtml4Natural/web_server/routes.xml<span class="nt">&lt;/routes&gt;</span>
-        <span class="nt">&lt;htdocs&gt;</span>/u/it/a140734/C/realHtml4Natural/web_server/htdocs/<span class="nt">&lt;/htdocs&gt;</span>
-        <span class="nt">&lt;templates&gt;</span>/u/it/a140734/C/realHtml4Natural/web_server/templates/<span class="nt">&lt;/templates&gt;</span>
-        <span class="nt">&lt;natsourcepath&gt;</span>/SAG/natural/fuser63/<span class="nt">&lt;/natsourcepath&gt;</span>
+        <span class="nt">&lt;routes&gt;</span>/home/tom/C/realHtml4Natural/web_server/routes.xml<span class="nt">&lt;/routes&gt;</span>
+        <span class="nt">&lt;htdocs&gt;</span>/home/tom/C/realHtml4Natural/web_server/htdocs/<span class="nt">&lt;/htdocs&gt;</span>
+        <span class="nt">&lt;templates&gt;</span>/home/tom/C/realHtml4Natural/web_server/templates/<span class="nt">&lt;/templates&gt;</span>
+        <span class="nt">&lt;natsourcepath&gt;</span>/natural/natsrc/<span class="nt">&lt;/natsourcepath&gt;</span>
         <span class="nt">&lt;port&gt;</span>1024<span class="nt">&lt;/port&gt;</span>
         <span class="nt">&lt;debug&gt;</span>true<span class="nt">&lt;/debug&gt;</span>
         <span class="nt">&lt;naterror&gt;</span>nat_error.html<span class="nt">&lt;/naterror&gt;</span>
@@ -67,9 +67,9 @@
         <span class="nt">&lt;natparms&gt;&lt;/natparms&gt;</span>
     <span class="nt">&lt;/environment&gt;</span>
     <span class="nt">&lt;environment</span> <span class="na">type=</span><span class="s">&quot;production&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;routes&gt;</span>/u/it/a140734/C/realHtml4Natural/web_server/routes.xml<span class="nt">&lt;/routes&gt;</span>
-        <span class="nt">&lt;htdocs&gt;</span>/u/it/a140734/C/realHtml4Natural/web_server/htdocs/<span class="nt">&lt;/htdocs&gt;</span>
-        <span class="nt">&lt;templates&gt;</span>/u/it/a140734/C/realHtml4Natural/web_server/templates/<span class="nt">&lt;/templates&gt;</span>
+        <span class="nt">&lt;routes&gt;</span>/home/tom/C/realHtml4Natural/web_server/routes_prod.xml<span class="nt">&lt;/routes&gt;</span>
+        <span class="nt">&lt;htdocs&gt;</span>/home/tom/C/realHtml4Natural/web_server/htdocs/<span class="nt">&lt;/htdocs&gt;</span>
+        <span class="nt">&lt;templates&gt;</span>/home/tom/C/realHtml4Natural/web_server/templates/<span class="nt">&lt;/templates&gt;</span>
     <span class="nt">&lt;/environment&gt;</span>
 <span class="nt">&lt;/miniweb&gt;</span>
 </pre></div>
@@ -155,20 +155,20 @@
 <p>In the route configuration file you enter the natural program which should run when a specific route is called.</p>
 <div class="section" id="id1">
 <h3>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;realHtml&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;realHtml&gt;</span>
     <span class="nt">&lt;route</span> <span class="na">path=</span><span class="s">&quot;notizen&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;programm&gt;</span>SHNOTIZ<span class="nt">&lt;/programm&gt;</span>
         <span class="nt">&lt;alias&gt;&lt;/alias&gt;</span>
         <span class="nt">&lt;return&gt;&lt;/return&gt;</span>
-        <span class="nt">&lt;library&gt;</span>TGAP0734<span class="nt">&lt;/library&gt;</span>
+        <span class="nt">&lt;library&gt;</span>TOMENGE<span class="nt">&lt;/library&gt;</span>
     <span class="nt">&lt;/route&gt;</span>
     <span class="nt">&lt;route</span> <span class="na">path=</span><span class="s">&quot;new_notiz&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;programm&gt;</span>STNOTIZ<span class="nt">&lt;/programm&gt;</span>
-        <span class="nt">&lt;library&gt;</span>TGAP0734<span class="nt">&lt;/library&gt;</span>
+        <span class="nt">&lt;library&gt;</span>TOMENGE<span class="nt">&lt;/library&gt;</span>
     <span class="nt">&lt;/route&gt;</span>
     <span class="nt">&lt;route</span> <span class="na">path=</span><span class="s">&quot;delete_notiz&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;programm&gt;</span>SDENOTIZ<span class="nt">&lt;/programm&gt;</span>
-        <span class="nt">&lt;library&gt;</span>TGAP0734<span class="nt">&lt;/library&gt;</span>
+        <span class="nt">&lt;library&gt;</span>TOMENGE<span class="nt">&lt;/library&gt;</span>
     <span class="nt">&lt;/route&gt;</span>
 <span class="nt">&lt;/realHtml&gt;</span>
 </pre></div>

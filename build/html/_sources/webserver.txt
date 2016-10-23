@@ -7,6 +7,8 @@ This version can parse POST Requests where data is urlencoded and not an multipa
 
 There are two configuration files that miniweb can use. A general configuration file with how the server should be configured and a file which controls when which natural program is called.
 
+.. _webserver-config:
+
 Server configuration
 ^^^^^^^^^^^^^^^^^^^^^
 The path to this file is stored in the environment variable "WEBCONFIG". It can contain multiple environments. For example a configuration for test and one for production.
@@ -18,10 +20,10 @@ Example
 
    <miniweb>
        <environment type="test">
-           <routes>/u/it/a140734/C/realHtml4Natural/web_server/routes.xml</routes>
-           <htdocs>/u/it/a140734/C/realHtml4Natural/web_server/htdocs/</htdocs>
-           <templates>/u/it/a140734/C/realHtml4Natural/web_server/templates/</templates>
-           <natsourcepath>/SAG/natural/fuser63/</natsourcepath>
+           <routes>/home/tom/C/realHtml4Natural/web_server/routes.xml</routes>
+           <htdocs>/home/tom/C/realHtml4Natural/web_server/htdocs/</htdocs>
+           <templates>/home/tom/C/realHtml4Natural/web_server/templates/</templates>
+           <natsourcepath>/natural/natsrc/</natsourcepath>
            <port>1024</port>
            <debug>true</debug>
            <naterror>nat_error.html</naterror>
@@ -30,9 +32,9 @@ Example
            <natparms></natparms>
        </environment>
        <environment type="production">
-           <routes>/u/it/a140734/C/realHtml4Natural/web_server/routes.xml</routes>
-           <htdocs>/u/it/a140734/C/realHtml4Natural/web_server/htdocs/</htdocs>
-           <templates>/u/it/a140734/C/realHtml4Natural/web_server/templates/</templates>
+           <routes>/home/tom/C/realHtml4Natural/web_server/routes_prod.xml</routes>
+           <htdocs>/home/tom/C/realHtml4Natural/web_server/htdocs/</htdocs>
+           <templates>/home/tom/C/realHtml4Natural/web_server/templates/</templates>
        </environment>
    </miniweb>
 
@@ -80,15 +82,15 @@ Example
             <programm>SHNOTIZ</programm>
             <alias></alias>
             <return></return>
-            <library>TGAP0734</library>
+            <library>TOMENGE</library>
         </route>
         <route path="new_notiz">
             <programm>STNOTIZ</programm>
-            <library>TGAP0734</library>
+            <library>TOMENGE</library>
         </route>
         <route path="delete_notiz">
             <programm>SDENOTIZ</programm>
-            <library>TGAP0734</library>
+            <library>TOMENGE</library>
         </route>
     </realHtml>
 
