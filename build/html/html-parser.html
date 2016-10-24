@@ -50,7 +50,7 @@
 <p>The syntax of the templates are inspirited from the template engine <a class="reference external" href="http://jinja.pocoo.org/">jinja</a> which is written in python.</p>
 <p>In contrast to natural4ajax you will write here your own HTML code. In your HTML code you can use two types of blocks to refer to variables or check them if they equals to a specific condition.</p>
 <p>Here is an simple example:</p>
-<div class="highlight-jinja"><div class="highlight"><pre><span class="x"> &lt;html&gt;</span>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="x"> &lt;html&gt;</span>
 <span class="x">     &lt;head&gt;</span>
 <span class="x">         &lt;title&gt;Hello World&lt;/title&gt;</span>
 <span class="x">     &lt;/head&gt;</span>
@@ -76,7 +76,7 @@
 </pre></div>
 </div>
 <p>With the LDA:</p>
-<div class="highlight-cobolfree"><div class="highlight"><pre><span class="nv">define</span> <span class="kr">data</span> <span class="nv">local</span>
+<div class="highlight-cobolfree"><div class="highlight"><pre><span></span><span class="nv">define</span> <span class="kr">data</span> <span class="nv">local</span>
 <span class="mi">1 </span><span class="kp">page</span>
 <span class="kp">  </span> <span class="mi">2 </span><span class="nv">isnnumber</span> <span class="p">(</span><span class="nv">N19</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
    <span class="mi">2 </span><span class="nv">username</span> <span class="p">(</span><span class="nv">A20</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
@@ -123,7 +123,7 @@
 <p>Here is an example where we just want five iterations through the array &#8220;varname&#8221; from the Array <a class="reference internal" href="#array-example"><span class="std std-ref">Example</span></a>.</p>
 <div class="section" id="id1">
 <h4>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-jinja"><div class="highlight"><pre><span class="x">&lt;ul&gt;</span>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="x">&lt;ul&gt;</span>
 <span class="cp">{%</span> <span class="k">for</span> <span class="nv">entry</span> <span class="k">in</span> <span class="nv">varname</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">    </span><span class="cp">{%</span> <span class="k">if</span> <span class="nb">loop</span><span class="nv">.i</span> <span class="o">==</span> <span class="m">4</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">        </span><span class="cp">{%</span> <span class="k">break</span> <span class="cp">%}</span><span class="x"></span>
@@ -165,7 +165,7 @@
 <p>Macros are like function you define them in a block and call them later on. You can define two types of parameter required and optional. The optional ones must be defined at the end and have a default value.</p>
 <div class="section" id="id5">
 <h4>Example<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">macro</span> <span class="nv">renderButton</span><span class="o">(</span><span class="nv">btn_text</span><span class="o">,</span> <span class="nv">btn_type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span><span class="o">)</span> <span class="cp">%}</span><span class="x"></span>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">macro</span> <span class="nv">renderButton</span><span class="o">(</span><span class="nv">btn_text</span><span class="o">,</span> <span class="nv">btn_type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span><span class="o">)</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">    &lt;button type=&quot;</span><span class="cp">{{</span> <span class="nv">btn_type</span> <span class="cp">}}</span><span class="x">&quot;&gt;btn_text&lt;/button&gt;</span>
 <span class="cp">{%</span> <span class="k">end</span><span class="o">-</span><span class="nv">macro</span> <span class="cp">%}</span><span class="x"></span>
 
@@ -174,8 +174,8 @@
 </pre></div>
 </div>
 <p>Output:</p>
-<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;reset&quot;</span><span class="nt">&gt;</span>Hello World<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span><span class="nt">&gt;</span>Hello World<span class="nt">&lt;/button&gt;</span>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;reset&quot;</span><span class="p">&gt;</span>Hello World<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>Hello World<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 </div>

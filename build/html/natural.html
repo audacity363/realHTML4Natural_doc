@@ -48,7 +48,7 @@
 <div class="section" id="parameter-data-area">
 <span id="pda"></span><h2>Parameter Data Area<a class="headerlink" href="#parameter-data-area" title="Permalink to this headline">¶</a></h2>
 <p>A parameter data area like this has to been defined. You don&#8217;t have to take this exact names but the type and length has to match.</p>
-<div class="highlight-cobolfree"><div class="highlight"><pre><span class="mi">1 </span><span class="nv">VALUES_REQ</span> <span class="p">(</span><span class="nv">A2024</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
+<div class="highlight-cobolfree"><div class="highlight"><pre><span></span><span class="mi">1 </span><span class="nv">VALUES_REQ</span> <span class="p">(</span><span class="nv">A2024</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
 <span class="mi">1 </span><span class="nv">VALUE_LENGTH</span> <span class="p">(</span><span class="nv">I4</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
 <span class="mi">1 </span><span class="nv">KEYS_REQ</span> <span class="p">(</span><span class="nv">A100</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
 <span class="mi">1 </span><span class="nv">PARM_COUNT</span> <span class="p">(</span><span class="nv">I4</span><span class="p">)</span>
@@ -100,7 +100,7 @@
 <p>You have to create a page group in an external local data area. Every variable under this group is available in the template. You can redefine variables and create new subgroups.</p>
 <div class="section" id="example">
 <h3>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-cobolfree"><div class="highlight"><pre><span class="nv">define</span> <span class="kr">data</span> <span class="nv">local</span>
+<div class="highlight-cobolfree"><div class="highlight"><pre><span></span><span class="nv">define</span> <span class="kr">data</span> <span class="nv">local</span>
 <span class="mi">1 </span><span class="kp">page</span>
 <span class="kp">   </span> <span class="mi">2 </span><span class="nv">daten</span> <span class="p">(</span><span class="nv">A128</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="mi">200</span><span class="p">)</span>
     <span class="mi">2 </span><span class="nv">isnnummer</span> <span class="p">(</span><span class="nv">A29</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="mi">200</span><span class="p">)</span>
@@ -146,7 +146,7 @@
 <p>You also need two Alphanumeric Variable with the length of 20. One of them has to contain the lda name which you are using to store the page group and the second must contain the name of the template you want to use.</p>
 <div class="section" id="id1">
 <h4>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-cobolfree"><div class="highlight"><pre><span class="nv">define</span> <span class="kr">data</span>
+<div class="highlight-cobolfree"><div class="highlight"><pre><span></span><span class="nv">define</span> <span class="kr">data</span>
 <span class="kr">   </span> <span class="nv">local</span> <span class="kp">using</span> <span class="nv">your_lda</span>
     <span class="nv">local</span>
         <span class="mi">1 </span><span class="nv">realhtml_ldaname</span><span class="p">(</span><span class="nv">A20</span><span class="p">)</span>
@@ -197,7 +197,7 @@
 </div>
 <div class="section" id="id2">
 <h3>Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-cobolfree"><div class="highlight"><pre><span class="nv">define</span> <span class="kr">data</span> <span class="nv">local</span>
+<div class="highlight-cobolfree"><div class="highlight"><pre><span></span><span class="nv">define</span> <span class="kr">data</span> <span class="nv">local</span>
    <span class="mi">1 </span><span class="nv">post_isn</span><span class="p">(</span><span class="nv">N19</span><span class="p">)</span> <span class="nv">inti</span> <span class="o">&lt;</span><span class="s2">&quot;1200000000000000000&quot;</span><span class="o">&gt;</span> <span class="o">/*</span><span class="nv">The</span> <span class="kp">value</span> <span class="kp">from</span> <span class="nv">the</span> <span class="nv">post</span> <span class="nv">argument</span>
    <span class="mi">1 </span><span class="nv">post_length</span> <span class="p">(</span><span class="nv">I4</span><span class="p">)</span> <span class="nv">init</span> <span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span>
    <span class="mi">1 </span><span class="nv">right_isn</span><span class="p">(</span><span class="nv">N19</span><span class="p">)</span>
@@ -257,7 +257,7 @@
 </div>
 <div class="section" id="id4">
 <h3>Example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-cobolfree"><div class="highlight"><pre><span class="nv">define</span> <span class="kr">data</span> <span class="nv">local</span>
+<div class="highlight-cobolfree"><div class="highlight"><pre><span></span><span class="nv">define</span> <span class="kr">data</span> <span class="nv">local</span>
     <span class="mi">1 </span><span class="nv">lda_name</span> <span class="p">(</span><span class="nv">A20</span><span class="p">)</span> <span class="nv">init</span> <span class="o">&lt;</span><span class="s2">&quot;mylda&quot;</span><span class="o">&gt;</span>
     <span class="mi">1 </span><span class="nv">template_name</span> <span class="p">(</span><span class="nv">A20</span><span class="p">)</span> <span class="nv">init</span> <span class="o">&lt;</span><span class="s2">&quot;mytemplate&quot;</span><span class="o">&gt;</span>
     <span class="mi">1 </span><span class="nv">output_file</span> <span class="p">(</span><span class="nv">A100</span><span class="p">)</span> <span class="nv">init</span> <span class="o">&lt;</span><span class="s2">&quot;/tmp/outout.html&quot;</span><span class="o">&gt;</span>
@@ -277,7 +277,7 @@
 <h2>Complete skeleton<a class="headerlink" href="#complete-skeleton" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="the-subprogram">
 <h3>The subprogram<a class="headerlink" href="#the-subprogram" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-cobolfree"><div class="highlight"><pre><span class="nv">define</span> <span class="kr">data</span>
+<div class="highlight-cobolfree"><div class="highlight"><pre><span></span><span class="nv">define</span> <span class="kr">data</span>
 <span class="kr">    </span> <span class="nv">parameter</span> <span class="kp">using</span> <span class="nv">reqinfos</span> <span class="o">/*</span><span class="nv">request</span> <span class="nv">information</span>
      <span class="nv">local</span> <span class="kp">using</span> <span class="nv">testlda</span>
 <span class="nv">end-define</span>
@@ -294,7 +294,7 @@
 </div>
 <div class="section" id="the-lda">
 <h3>The LDA<a class="headerlink" href="#the-lda" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-cobolfree"><div class="highlight"><pre><span class="nv">define</span> <span class="kr">data</span> <span class="nv">local</span>
+<div class="highlight-cobolfree"><div class="highlight"><pre><span></span><span class="nv">define</span> <span class="kr">data</span> <span class="nv">local</span>
     <span class="mi">1 </span><span class="nv">realhtml_ldaname</span> <span class="p">(</span><span class="nv">A20</span><span class="p">)</span>
     <span class="mi">1 </span><span class="nv">realhtml_template</span> <span class="p">(</span><span class="nv">A20</span><span class="p">)</span>
     <span class="mi">1 </span><span class="kp">page</span>
@@ -306,7 +306,7 @@
 </div>
 <div class="section" id="the-pda">
 <h3>The PDA<a class="headerlink" href="#the-pda" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-cobolfree"><div class="highlight"><pre><span class="nv">DEFINE</span> <span class="kr">DATA</span> <span class="nv">PARAMETER</span>
+<div class="highlight-cobolfree"><div class="highlight"><pre><span></span><span class="nv">DEFINE</span> <span class="kr">DATA</span> <span class="nv">PARAMETER</span>
     <span class="mi">1 </span><span class="nv">VALUES_REQ</span> <span class="p">(</span><span class="nv">A2024</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
     <span class="mi">1 </span><span class="nv">VALUE_LENGTH</span> <span class="p">(</span><span class="nv">I4</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
     <span class="mi">1 </span><span class="nv">REQ_KEYS</span> <span class="p">(</span><span class="nv">A100</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
