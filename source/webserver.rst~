@@ -3,9 +3,11 @@ Webserver
 
 The webserver is based on the open source project miniweb (http://www.http://miniweb.sourceforge.net/) but this version is heavily modified.
 
-This version can parse POST Requests where data is urlencoded and not an multipart message, read cookies and set new ones and of course calling natural programs.
+This version can parse POST Requests where data is urlencoded and not an multipart message, read cookies and set new ones and of course calling Natural programs.
 
-There are two configuration files that miniweb can use. A general configuration file with how the server should be configured and a file which controls when which natural program is called.
+There are two configuration files that miniweb can use. A general configuration file with how the server should be configured and a file which controls when which Natural program is called.
+
+.. _webserver-config:
 
 Server configuration
 ^^^^^^^^^^^^^^^^^^^^^
@@ -18,10 +20,10 @@ Example
 
    <miniweb>
        <environment type="test">
-           <routes>/u/it/a140734/C/realHtml4Natural/web_server/routes.xml</routes>
-           <htdocs>/u/it/a140734/C/realHtml4Natural/web_server/htdocs/</htdocs>
-           <templates>/u/it/a140734/C/realHtml4Natural/web_server/templates/</templates>
-           <natsourcepath>/SAG/natural/fuser63/</natsourcepath>
+           <routes>/home/tom/C/realHtml4Natural/web_server/routes.xml</routes>
+           <htdocs>/home/tom/C/realHtml4Natural/web_server/htdocs/</htdocs>
+           <templates>/home/tom/C/realHtml4Natural/web_server/templates/</templates>
+           <natsourcepath>/natural/natsrc/</natsourcepath>
            <port>1024</port>
            <debug>true</debug>
            <naterror>nat_error.html</naterror>
@@ -30,9 +32,9 @@ Example
            <natparms></natparms>
        </environment>
        <environment type="production">
-           <routes>/u/it/a140734/C/realHtml4Natural/web_server/routes.xml</routes>
-           <htdocs>/u/it/a140734/C/realHtml4Natural/web_server/htdocs/</htdocs>
-           <templates>/u/it/a140734/C/realHtml4Natural/web_server/templates/</templates>
+           <routes>/home/tom/C/realHtml4Natural/web_server/routes_prod.xml</routes>
+           <htdocs>/home/tom/C/realHtml4Natural/web_server/htdocs/</htdocs>
+           <templates>/home/tom/C/realHtml4Natural/web_server/templates/</templates>
        </environment>
    </miniweb>
 
@@ -51,7 +53,7 @@ Explanation enviroment childs
 +---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
 | templates     | the path to the template folder                                                                               | None           | yes      |
 +---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
-| natsourcepath | path to the natural sources (must be the root directory)                                                      | None           | yes      |
+| natsourcepath | path to the Natural sources (must be the root directory)                                                      | None           | yes      |
 +---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
 | port          | port on which the webserver should listen                                                                     | 80             | no       |
 +---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
@@ -68,7 +70,7 @@ Explanation enviroment childs
 
 Route configuration
 ^^^^^^^^^^^^^^^^^^^^
-In the route configuration file do you enter the natural program which should run when a specific route is called.
+In the route configuration file you enter the natural program which should run when a specific route is called.
 
 Example
 -------
@@ -80,15 +82,15 @@ Example
             <programm>SHNOTIZ</programm>
             <alias></alias>
             <return></return>
-            <library>TGAP0734</library>
+            <library>TOMENGE</library>
         </route>
         <route path="new_notiz">
             <programm>STNOTIZ</programm>
-            <library>TGAP0734</library>
+            <library>TOMENGE</library>
         </route>
         <route path="delete_notiz">
             <programm>SDENOTIZ</programm>
-            <library>TGAP0734</library>
+            <library>TOMENGE</library>
         </route>
     </realHtml>
 

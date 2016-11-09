@@ -46,8 +46,8 @@
   <div class="section" id="webserver">
 <h1>Webserver<a class="headerlink" href="#webserver" title="Permalink to this headline">¶</a></h1>
 <p>The webserver is based on the open source project miniweb (<a class="reference external" href="http://www.http://miniweb.sourceforge.net/">http://www.http://miniweb.sourceforge.net/</a>) but this version is heavily modified.</p>
-<p>This version can parse POST Requests where data is urlencoded and not an multipart message, read cookies and set new ones and of course calling natural programs.</p>
-<p>There are two configuration files that miniweb can use. A general configuration file with how the server should be configured and a file which controls when which natural program is called.</p>
+<p>This version can parse POST Requests where data is urlencoded and not an multipart message, read cookies and set new ones and of course calling Natural programs.</p>
+<p>There are two configuration files that miniweb can use. A general configuration file with how the server should be configured and a file which controls when which Natural program is called.</p>
 <div class="section" id="server-configuration">
 <span id="webserver-config"></span><h2>Server configuration<a class="headerlink" href="#server-configuration" title="Permalink to this headline">¶</a></h2>
 <p>The path to this file is stored in the environment variable &#8220;WEBCONFIG&#8221;. It can contain multiple environments. For example a configuration for test and one for production.</p>
@@ -112,7 +112,7 @@
 <td>yes</td>
 </tr>
 <tr class="row-odd"><td>natsourcepath</td>
-<td>path to the natural sources (must be the root directory)</td>
+<td>path to the Natural sources (must be the root directory)</td>
 <td>None</td>
 <td>yes</td>
 </tr>
@@ -127,7 +127,7 @@
 <td>no</td>
 </tr>
 <tr class="row-even"><td>naterror</td>
-<td>the template that should be rendered when natural error occurs (debug must set to true)</td>
+<td>the template that should be rendered when Natural error occurs (debug must set to true)</td>
 <td>None</td>
 <td>no</td>
 </tr>
@@ -142,7 +142,7 @@
 <td>no</td>
 </tr>
 <tr class="row-odd"><td>natparms</td>
-<td>parameter that will be passed through to natural (the same as if you were calling natural from the binary)</td>
+<td>parameter that will be passed through to Natural (the same as if you were calling Natural from the binary)</td>
 <td>None</td>
 <td>no</td>
 </tr>
@@ -152,7 +152,7 @@
 </div>
 <div class="section" id="route-configuration">
 <h2>Route configuration<a class="headerlink" href="#route-configuration" title="Permalink to this headline">¶</a></h2>
-<p>In the route configuration file you enter the natural program which should run when a specific route is called.</p>
+<p>In the route configuration file you enter the Natural program which should run when a specific route is called.</p>
 <div class="section" id="id1">
 <h3>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;realHtml&gt;</span>
@@ -196,7 +196,7 @@
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>program</td>
-<td>the natural program that will be called</td>
+<td>the Natural program that will be called</td>
 <td>None</td>
 <td>no</td>
 </tr>
@@ -206,12 +206,12 @@
 <td>no</td>
 </tr>
 <tr class="row-even"><td>alias</td>
-<td>a file in the htdocs folder that will be delivered instead of calling the natural program</td>
+<td>a file in the htdocs folder that will be delivered instead of calling the Natural program</td>
 <td>None</td>
 <td>no</td>
 </tr>
 <tr class="row-odd"><td>return</td>
-<td>a HTTP code that will be returned instead of a file from htdocs or calling a natural program</td>
+<td>a HTTP code that will be returned instead of a file from htdocs or calling a Natural program</td>
 <td>None</td>
 <td>no</td>
 </tr>

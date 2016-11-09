@@ -45,7 +45,7 @@ Explanation parameter data area
 Variables for the template
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You have to create a page group in an external local data area. Every variable under this group is available in the template. You can redefine variables and create new subgroups. 
+You have to create a page group in an external local data area (LDA). Every variable under this group is available in the template. You can redefine variables and create new subgroups. 
 
 Example:
 --------
@@ -78,12 +78,12 @@ Supported data types
 | Unicode (U)                                         | every/Dynamic |
 +-----------------------------------------------------+---------------+
 
-Every Type can be also defined as 1D/2D and 3D arrays but then the dynamic length is not supported. This is due to a bug in the INTERFACE 4 API from the SAG.
+Every type can be also defined as 1D/2D and 3D arrays but then the dynamic length is not supported. This is due to a bug in the INTERFACE 4 API from the SAG.
 
 Other
 -----
 
-You also need two Alphanumeric Variable with the length of 20. One of them has to contain the lda name which you are using to store the page group and the second must contain the name of the template you want to use.
+You also need two alphanumeric variable with the length of 20. One of them has to contain the LDA name which you are using to store the page group and the second must contain the name of the template you want to use.
 
 Example
 .......
@@ -153,7 +153,7 @@ Arguments
 +--------+--------------------------+-----------------------------------------------------+
 | number | type                     | purpose                                             |
 +========+==========================+=====================================================+
-| 1      | Alphanumeric (A20)       | name of the lda                                     |
+| 1      | Alphanumeric (A20)       | name of the LDA                                     |
 +--------+--------------------------+-----------------------------------------------------+
 | 2      | Alphanumeric (A20)       | name of the template                                |
 +--------+--------------------------+-----------------------------------------------------+
@@ -161,7 +161,7 @@ Arguments
 +--------+--------------------------+-----------------------------------------------------+
 | 4      | Alphanumeric (A Dynamic) | settings string                                     |
 +--------+--------------------------+-----------------------------------------------------+
-| 5      | see :ref:`datatypes`     | the page group from your lda                        |
+| 5      | see :ref:`datatypes`     | the page group from your LDA                        |
 +--------+--------------------------+-----------------------------------------------------+
 
 Example

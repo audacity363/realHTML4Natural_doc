@@ -47,7 +47,7 @@
 <h1>Html Parser<a class="headerlink" href="#html-parser" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <span id="template-example"></span><h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>The syntax of the templates are inspirited from the template engine <a class="reference external" href="http://jinja.pocoo.org/">jinja</a> which is written in python.</p>
+<p>The syntax of the templates are inspirited from the template engine <a class="reference external" href="http://jinja.pocoo.org/">jinja</a> which is written in Python.</p>
 <p>In contrast to natural4ajax you will write here your own HTML code. In your HTML code you can use two types of blocks to refer to variables or check them if they equals to a specific condition.</p>
 <p>Here is an simple example:</p>
 <div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="x"> &lt;html&gt;</span>
@@ -112,14 +112,14 @@
 </div>
 <div class="section" id="command-blocks">
 <h2>Command blocks<a class="headerlink" href="#command-blocks" title="Permalink to this headline">¶</a></h2>
-<p>Command blocks are control structures which influences the render process of the template. So you can iterate through arrays, or render deferent HTML code when a condition is true.</p>
+<p>Command blocks are control structures which influences the render process of the template. So you can iterate through arrays, or render different HTML code when a condition is true.</p>
 <div class="section" id="for">
 <h3>For<a class="headerlink" href="#for" title="Permalink to this headline">¶</a></h3>
 <p>Can loop over each entry in a array. For example the user list from above: <a class="reference internal" href="#template-example"><span class="std std-ref">Overview</span></a>. In the for loop you can access a special variable: <code class="code docutils literal"><span class="pre">loop.i</span></code>. This variable contains the current iteration of the loop with an index of zero. In the loop you can use the <code class="code docutils literal"><span class="pre">{%</span> <span class="pre">break</span> <span class="pre">%}</span></code> command to break out of the loop and the <code class="code docutils literal"><span class="pre">{%</span> <span class="pre">continue</span> <span class="pre">%}</span></code> command to go into the next iteration of the loop.</p>
 </div>
 <div class="section" id="if">
 <h3>If<a class="headerlink" href="#if" title="Permalink to this headline">¶</a></h3>
-<p>The if statement is based on the python if. But this one have much less functionality (at least in version 1.0). So you can compare variables with each other or a hard coded value. With the <code class="code docutils literal"><span class="pre">{%</span> <span class="pre">else</span> <span class="pre">%}</span></code> command you can switch to the else branch of the if statement.</p>
+<p>The if statement is based on the Python if. But this one have much less functionality (at least in version 1.0). So you can compare variables with each other or a hard coded value. With the <code class="code docutils literal"><span class="pre">{%</span> <span class="pre">else</span> <span class="pre">%}</span></code> command you can switch to the else branch of the if statement.</p>
 <p>Here is an example where we just want five iterations through the array &#8220;varname&#8221; from the Array <a class="reference internal" href="#array-example"><span class="std std-ref">Example</span></a>.</p>
 <div class="section" id="id1">
 <h4>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>

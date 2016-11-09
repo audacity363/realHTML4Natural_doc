@@ -3,9 +3,9 @@ Webserver
 
 The webserver is based on the open source project miniweb (http://www.http://miniweb.sourceforge.net/) but this version is heavily modified.
 
-This version can parse POST Requests where data is urlencoded and not an multipart message, read cookies and set new ones and of course calling natural programs.
+This version can parse POST Requests where data is urlencoded and not an multipart message, read cookies and set new ones and of course calling Natural programs.
 
-There are two configuration files that miniweb can use. A general configuration file with how the server should be configured and a file which controls when which natural program is called.
+There are two configuration files that miniweb can use. A general configuration file with how the server should be configured and a file which controls when which Natural program is called.
 
 .. _webserver-config:
 
@@ -53,24 +53,24 @@ Explanation enviroment childs
 +---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
 | templates     | the path to the template folder                                                                               | None           | yes      |
 +---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
-| natsourcepath | path to the natural sources (must be the root directory)                                                      | None           | yes      |
+| natsourcepath | path to the Natural sources (must be the root directory)                                                      | None           | yes      |
 +---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
 | port          | port on which the webserver should listen                                                                     | 80             | no       |
 +---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
 | debug         | decide wether an error occurs to render a custom 500 page with the error message or a generic 500 error page  | false          | no       |
 +---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
-| naterror      | the template that should be rendered when natural error occurs (debug must set to true)                       | None           | no       |
+| naterror      | the template that should be rendered when Natural error occurs (debug must set to true)                       | None           | no       |
 +---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
 | ldaerror      | the template that should be rendered when error occurs while parsing the LDA (debug must set to true)         | None           | no       |
 +---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
 | parsererror   | the template that should be rendered when error occurs while handling the template (debug must set to true)   | None           | no       |
 +---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
-| natparms      | parameter that will be passed through to natural (the same as if you were calling natural from the binary)    | None           | no       |
+| natparms      | parameter that will be passed through to Natural (the same as if you were calling Natural from the binary)    | None           | no       |
 +---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
 
 Route configuration
 ^^^^^^^^^^^^^^^^^^^^
-In the route configuration file you enter the natural program which should run when a specific route is called.
+In the route configuration file you enter the Natural program which should run when a specific route is called.
 
 Example
 -------
@@ -106,13 +106,13 @@ Explanation route childs
 +----------+----------------------------------------------------------------------------------------------+----------------+----------+
 | entry    | explanation                                                                                  | default Value  | required |
 +==========+==============================================================================================+================+==========+
-| program  | the natural program that will be called                                                      | None           | no       |
+| program  | the Natural program that will be called                                                      | None           | no       |
 +----------+----------------------------------------------------------------------------------------------+----------------+----------+
 | library  | the library to logon                                                                         | None           | no       |
 +----------+----------------------------------------------------------------------------------------------+----------------+----------+
-| alias    | a file in the htdocs folder that will be delivered instead of calling the natural program    | None           | no       |
+| alias    | a file in the htdocs folder that will be delivered instead of calling the Natural program    | None           | no       |
 +----------+----------------------------------------------------------------------------------------------+----------------+----------+
-| return   | a HTTP code that will be returned instead of a file from htdocs or calling a natural program | None           | no       |
+| return   | a HTTP code that will be returned instead of a file from htdocs or calling a Natural program | None           | no       |
 +----------+----------------------------------------------------------------------------------------------+----------------+----------+
 
 

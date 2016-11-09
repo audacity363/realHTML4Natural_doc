@@ -6,7 +6,7 @@ Html Parser
 Overview
 ^^^^^^^^
 
-The syntax of the templates are inspirited from the template engine `jinja <http://jinja.pocoo.org/>`_ which is written in python.
+The syntax of the templates are inspirited from the template engine `jinja <http://jinja.pocoo.org/>`_ which is written in Python.
 
 In contrast to natural4ajax you will write here your own HTML code. In your HTML code you can use two types of blocks to refer to variables or check them if they equals to a specific condition.
 
@@ -97,7 +97,7 @@ The explanation above also applies to 2D or 3D arrays. You just add more square 
 Command blocks
 ^^^^^^^^^^^^^^
 
-Command blocks are control structures which influences the render process of the template. So you can iterate through arrays, or render deferent HTML code when a condition is true.
+Command blocks are control structures which influences the render process of the template. So you can iterate through arrays, or render different HTML code when a condition is true.
 
 For
 ---
@@ -107,7 +107,7 @@ Can loop over each entry in a array. For example the user list from above: :ref:
 If
 --
 
-The if statement is based on the python if. But this one have much less functionality (at least in version 1.0). So you can compare variables with each other or a hard coded value. With the :code:`{% else %}` command you can switch to the else branch of the if statement.
+The if statement is based on the Python if. But this one have much less functionality (at least in version 1.0). So you can compare variables with each other or a hard coded value. With the :code:`{% else %}` command you can switch to the else branch of the if statement.
 
 Here is an example where we just want five iterations through the array "varname" from the Array :ref:`array-example`.
 

@@ -40,11 +40,12 @@ Explanation parameter data area
 | req_settings  | just a long string which contains settings from the webserver configuration for the html parser                                                                     |
 +---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
+.. _template-vars:
 
 Variables for the template
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You have to create a page group in an external local data area. Every variable under this group is available in the template. You can redefine variables and create new subgroups. 
+You have to create a page group in an external local data area (LDA). Every variable under this group is available in the template. You can redefine variables and create new subgroups. 
 
 Example:
 --------
@@ -77,12 +78,12 @@ Supported data types
 | Unicode (U)                                         | every/Dynamic |
 +-----------------------------------------------------+---------------+
 
-Every Type can be also defined as 1D/2D and 3D arrays but then the dynamic length is not supported. This is due to a bug in the INTERFACE 4 API from the SAG.
+Every type can be also defined as 1D/2D and 3D arrays but then the dynamic length is not supported. This is due to a bug in the INTERFACE 4 API from the SAG.
 
 Other
 -----
 
-You also need two Alphanumeric Variable with the length of 20. One of them has to contain the lda name which you are using to store the page group and the second must contain the name of the template you want to use.
+You also need two alphanumeric variable with the length of 20. One of them has to contain the LDA name which you are using to store the page group and the second must contain the name of the template you want to use.
 
 Example
 .......
@@ -199,5 +200,36 @@ The subprogram
 
    /* your code goes here
 
-   call interface4 "genpage" lda_name template_name output_file settings page
+   call interface4 "genpage" realhtml_ldaname realhtml_template 
+                             req_file req_settings page
+
+The LDA
+-------
+
+.. code-block:: cobolfree
+
+   define data local
+       1 realhtml_ldaname (A20)
+       1 realhtml_template (A20)
+       1 page
+           2 field-1 (A10)
+           2 field-2 (A20)
+   end-define
+
+The PDA
+-------
+
+.. code-block:: cobolfree
+
+   DEFINE DATA PARAMETER
+       1 VALUES_REQ (A2024/1:20)
+       1 VALUE_LENGTH (I4/1:20)
+       1 REQ_KEYS (A100/1:20)
+       1 PARM_COUNT (I4)
+       1 REQ_TYPE (A5)
+       1 REQ_FILE (A100)
+       1 REQ_SETTINGS (A) DYNAMIC
+   END-DEFINE
+   
+
 

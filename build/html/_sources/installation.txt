@@ -15,7 +15,7 @@ So you have to edit the following Makefiles and change the $CC variable to your 
 - ./Makefile
 - ./Makedyn
 
-You also have to have the shared object "libnatural.so" from the SoftwareAG in your "LIBPATH" Environment variable. It should be located in your natural bin directory.
+You also have to have the shared object "libnatural.so" from the Software AG in your "LIBPATH" Environment variable. It should be located in your Natural bin directory.
 Now you should be able to just type in "make all" in the root folder and the complete project will be build in the right order.
 
 Installation

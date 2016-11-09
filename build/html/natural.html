@@ -97,7 +97,7 @@
 </div>
 <div class="section" id="variables-for-the-template">
 <span id="template-vars"></span><h2>Variables for the template<a class="headerlink" href="#variables-for-the-template" title="Permalink to this headline">¶</a></h2>
-<p>You have to create a page group in an external local data area. Every variable under this group is available in the template. You can redefine variables and create new subgroups.</p>
+<p>You have to create a page group in an external local data area (LDA). Every variable under this group is available in the template. You can redefine variables and create new subgroups.</p>
 <div class="section" id="example">
 <h3>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cobolfree"><div class="highlight"><pre><span></span><span class="nv">define</span> <span class="kr">data</span> <span class="nv">local</span>
@@ -139,11 +139,11 @@
 </tr>
 </tbody>
 </table>
-<p>Every Type can be also defined as 1D/2D and 3D arrays but then the dynamic length is not supported. This is due to a bug in the INTERFACE 4 API from the SAG.</p>
+<p>Every type can be also defined as 1D/2D and 3D arrays but then the dynamic length is not supported. This is due to a bug in the INTERFACE 4 API from the SAG.</p>
 </div>
 <div class="section" id="other">
 <h3>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h3>
-<p>You also need two Alphanumeric Variable with the length of 20. One of them has to contain the lda name which you are using to store the page group and the second must contain the name of the template you want to use.</p>
+<p>You also need two alphanumeric variable with the length of 20. One of them has to contain the LDA name which you are using to store the page group and the second must contain the name of the template you want to use.</p>
 <div class="section" id="id1">
 <h4>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-cobolfree"><div class="highlight"><pre><span></span><span class="nv">define</span> <span class="kr">data</span>
@@ -234,7 +234,7 @@
 <tbody valign="top">
 <tr class="row-even"><td>1</td>
 <td>Alphanumeric (A20)</td>
-<td>name of the lda</td>
+<td>name of the LDA</td>
 </tr>
 <tr class="row-odd"><td>2</td>
 <td>Alphanumeric (A20)</td>
@@ -250,7 +250,7 @@
 </tr>
 <tr class="row-even"><td>5</td>
 <td>see <a class="reference internal" href="#datatypes"><span class="std std-ref">Supported data types</span></a></td>
-<td>the page group from your lda</td>
+<td>the page group from your LDA</td>
 </tr>
 </tbody>
 </table>
