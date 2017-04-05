@@ -18,7 +18,7 @@ How does it work?
 
 .. image:: explanation.png
 
-The complete framework is based on the Natural native interfaces (NNI) which allows you to create a Natural process from your own program without using the Natural binary directly. The interface to the HTML parser is based on the interface4 API from the Natural native interfaces. With this API you can call external programs out of Natural and hand over parameters. Then you can read attributes like value, length or type, unfortunately not there names. So I have written a program which parses the local data areas from Natural and can make a connection between the parameters and the names based one the position, length and type. Based on this informations you can write a HTML template which is just HTML code with placeholder for the Natural variables. The HTML parser will then parse the template an replace these placeholder with the corresponding values. But how does the web server know when to call a Natural program? That is quite simple. In a configuration file you describe on which URL which program is called. When nothing is defined the server will deliver the requested file out of a htdocs folder. When no file is requested or the file is not found a "Page not found" (HTTP error 400) is delivered.
+The complete framework is based on the Natural native interfaces (NNI) which allows you to create a Natural process from your own program without using the Natural binary directly. The interface to the HTML parser is based on the interface4 API from the Natural native interfaces. With this API you can call external programs out of Natural and hand over parameters. Then you can read attributes like value, length or type, unfortunately not there names. So I have written a program which parses the local data areas (LDAs) from Natural and can make a connection between the parameters and the names based one the position, length and type. Based on this informations you can write a HTML template which is just HTML code with placeholder for the Natural variables. The HTML parser will then parse the template an replace these placeholder with the corresponding values. But how does the web server know when to call a Natural program? That is quite simple. In a configuration file you describe on which URL which program is called. When nothing is defined the server will deliver the requested file out of a htdocs folder. When no file is requested or the file is not found a "Page not found" (HTTP error 400) is delivered.
 
 Guide:
 ------
@@ -28,6 +28,7 @@ Guide:
 
    installation
    webserver
+   tomcat connector
    natural
    html-parser
    workflow
