@@ -1,6 +1,8 @@
 Webserver
 =========
 
+**The Webserver is highly deprecated! Dont use it anymore. Use instead the** :ref:`tomcat-connector` 
+
 The webserver is based on the open source project miniweb (http://www.http://miniweb.sourceforge.net/) but this version is heavily modified.
 
 This version can parse POST Requests where data is urlencoded and not an multipart message, read cookies and set new ones and of course calling Natural programs.

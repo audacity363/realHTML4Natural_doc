@@ -1,3 +1,5 @@
+.. _tomcat-connector:
+
 Tomcat Connector
 ================
 
@@ -8,6 +10,9 @@ When you want to use the framework with a new or current tomcat installation you
 - A tomcat servlet which handles the requests
 - A library which provides helper function for the servlet
 - A JNI (Java Native Interface) Library which calls Natural
+
+
+.. image:: _static/tomcat_connector.png
 
 Tomcat Servlet
 --------------
@@ -45,6 +50,7 @@ JNI library
 -----------
 In the JNI library happens all the magic. Here the parameter for the natural gets generated, a new process gets spawned  and natural runs in this process. The library now waits until this process has exited and returns to the servlet.
 
+
 Installation
 ^^^^^^^^^^^^^
 The installation is rather simple: 
@@ -74,5 +80,91 @@ The installation is rather simple:
 
 Connector configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Placeholder
+The path to this file is stored in the environment variable "realHTMLconfiguration". It can contain multiple environments. For example a configuration for multiple natural environments with different parm files.
+
+Example
+-------
+
+.. code-block:: xml
+
+    <realHTML4Natural>
+        <environment type="env1">
+            <routes>/realHTML4Natural/env1/routes.xml</routes>
+            <templates>/realHTML4Natural/env1/templates/</templates>
+            <natparms>parm=env1parm etid=$$</natparms>
+            <natsourcepath>/realHTML4Natural/natural/env1/fuser63/</natsourcepath>
+        </environment>
+        <environment type="env2">
+            <routes>/realHTML4Natural/env2/routes.xml</routes>
+            <templates>/realHTML4Natural/env2/templates/</templates>
+            <natparms>parm=env2parm etid=$$</natparms>
+            <natsourcepath>/realHTML4Natural/natural/env2/fuser63/</natsourcepath>
+        </environment>
+    </realHTML4Natural>
+
+Explanation enviroment tag
+--------------------------
+
+With the environment tag you can setup multiple environments on which the servlet should listen. It takes exactly one argument. The type attribute with the name of the environment.  The url entry after "realHTML4Natural" specify the enviroment to call. For example "/realHTML4Natural/env1/..." would call the configuration under the "environment" tag with the type "env1". 
+
+Explanation enviroment childs
+-----------------------------
++---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
+| entry         | explanation                                                                                                   | default Value  | required |
++===============+===============================================================================================================+================+==========+
+| routes        | the path to the routes configuration file                                                                     | None           | yes      |
++---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
+| templates     | the path to the template folder                                                                               | None           | yes      |
++---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
+| natsourcepath | path to the Natural sources (must be the root directory of the natural source)                                | None           | yes      |
++---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
+| natparms      | parameter that will be passed through to Natural (the same as if you were calling Natural from the binary)    | None           | no       |
++---------------+---------------------------------------------------------------------------------------------------------------+----------------+----------+
+
+Routes configuration
+^^^^^^^^^^^^^^^^^^^^^
+In the route configuration file you enter the Natural program which should run when a specific route is called. This is the file that is specified in the "routes" tag in your `Connector configuration`_.
+
+Example
+-------
+
+.. code-block:: xml
+
+    <realHtml>
+        <route path="/notizen">
+            <programm>SHNOTIZ</programm>
+            <library>TOMENGE</library>
+            <debug>true</debug>
+        </route>
+        <route path="/new_notiz">
+            <programm>STNOTIZ</programm>
+            <library>TOMENGE</library>
+        </route>
+        <route path="/delete_notiz">
+            <programm>SDENOTIZ</programm>
+            <library>TOMENGE</library>
+        </route>
+    </realHtml>
+
+
+Route tag
+---------
+
+The route tag takes exactly one parameter. The path attribute. That is the URL which is requested on the server after the "realHTML4Natural/<enviroment>" url.
+
+For example: The URL "localhost:8080/realHTML4Natural/env1/notizen" would call the program SHNOTIZ in the library TOMENGE.
+
+Explanation route childs
+------------------------
+
++----------+----------------------------------------------------------------------------------------------+----------------+----------+
+| entry    | explanation                                                                                  | default Value  | required |
++==========+==============================================================================================+================+==========+
+| program  | the Natural subprogram that will be called                                                   | None           | yes      |
++----------+----------------------------------------------------------------------------------------------+----------------+----------+
+| library  | the library to logon                                                                         | None           | yes      |
++----------+----------------------------------------------------------------------------------------------+----------------+----------+
+| debug    | create a logfile with the name "<ldaname>.log" in the /tmp directory                         | False          | no       |
++----------+----------------------------------------------------------------------------------------------+----------------+----------+
+
 
