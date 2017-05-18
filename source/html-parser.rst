@@ -28,7 +28,7 @@ Here is an simple example:
               <tbody>
               {% for user in username %}
                   <tr>
-                       <td>{{ isnnumber[loop.i]</tr>
+                       <td>{{ isnnumber[loop.i] }}</tr>
                        <td>{{ user }}</tr>
                        <td>{{ firstname[loop.i] }}</tr>
                   </tr>
@@ -54,7 +54,7 @@ There are two types of blocks. First the variable block (:code:`{{ ... }}`) whic
 Variable blocks
 ^^^^^^^^^^^^^^^
 
-As in the section :ref:`template-vars` explained you have available every variable that is defined under the page group in your LDA. If a variable is not known the HTML parser will exit with an error message and will be render a error page instead. Currently (Version 1.0) it is not possible to add two variable blocks in one line. The parser would just print out the complete block without parsing it. I am working on this problem.
+As in the section :ref:`template-vars` explained you have available every variable that is defined under the page group in your LDA. If a variable is not known the HTML parser will exit with an error message and will be render a error page instead. Currently (Version 2.0) it is not possible to add two variable blocks in one line. The parser would just print out the complete block without parsing it. I am working on this problem.
 
 Plain variable:
 ---------------
@@ -137,6 +137,42 @@ Example
 
 :code:`<pre>{% printVars() %}</pre>`
 
+genJSON
+-------
+
+This function will generate a JSON object from the paramaters that where given. A group will create a new JSON object in the ROOT object.
+
+Example
+.......
+
+Variables:
+
+.. code-block:: cobolfree
+
+   DEFINE DATA LOCAL
+       1 VAR1 (A10/1:5) init <"val1", "val2", "val3", "val4", "val5">
+       2 GRP1
+        3 VAR2 (I4) init <63>
+        3 VAR3 (A20) init <"Hello World">
+
+
+.. code-block:: jinja
+
+   {% genJSON(VAR1, GRP1) %}
+
+Output:
+
+.. code-block:: javascript
+
+   {
+       "VAR1": ["val1", "val2", "val3", "val4", "val5"],
+       "GRP1": 
+       {
+           "VAR2": 63,
+           "VAR3": "Hello World"
+       }
+   }
+
 
 typeof
 ------
@@ -150,6 +186,8 @@ Example
 
 import
 ------
+
+**Currently only in the Version 1.0 available and not in the 2.0_beta. In the next parser version it will be available again.**
 
 Imports another template that is provided after the import statement with quotation marks. This path is relative to the template_path defined in the :ref:`webserver-config`. The new template is parsed with the variable scope of the root template. It is planed to provide a second parameter which makes it possible to call a second natural program for this template.
 
@@ -184,3 +222,7 @@ Output:
    <button type="reset">Hello World</button>
    <button type="submit">Hello World</button>
 
+Perview Versions
+^^^^^^^^^^^^^^^^
+
+When you want to life dangerous you can get the develop version from the parser `here <https://github.com/audacity363/realHTMLparser>`_. But there is no documentation for this version (The code speaks for itself) nor can I promise that it will work after every commit. 

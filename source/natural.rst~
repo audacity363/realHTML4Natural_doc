@@ -10,42 +10,43 @@ A parameter data area like this has to been defined. You don't have to take this
 
 .. code-block:: cobolfree
 
-   1 VALUES_REQ (A2024/1:20)
-   1 VALUE_LENGTH (I4/1:20)
-   1 KEYS_REQ (A100/1:20)
-   1 PARM_COUNT (I4)
-   1 REQ_TYPE (A5)
-   1 REQ_FILE (A100)
-   1 REQ_SETTINGS (A) DYNAMIC
+   1 HTTP_KEYS (A/1:*)
+   1 HTTP_VALS (A/1:*)
+   1 HTTP_VALS_LENGTH (I4/1:*)
+   1 HTTP_PARM_COUNT (I4)
+   1 HTTP_REQ_TYPE (A) DYNAMIC
+
+   1 REALHTML_TMPFILE (A) DYNAMIC
+   1 REALHTML_SETTINGS (A) DYNAMIC
 
 
 Explanation parameter data area
 -------------------------------
 
-+---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| variable name | explanation                                                                                                                                                         |
-+===============+=====================================================================================================================================================================+
-| value_req     | the variables value_req and keys_req belongs together. These two array form together a Key/Value Pair. "value_req" includes the values from the GET or POST request |
-+---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| value_length  | the real length of the value in occurrence n                                                                                                                        |
-+---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| keys_req      | the key to the value in occurrence n                                                                                                                                |
-+---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| parm_count    | includes own much entry in value_req/value_length/keys_req are set                                                                                                  |
-+---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| req_type      | which HTTP request was received                                                                                                                                     |
-+---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| req_file      | just a internal variable. Contains the file which will be delivered to the browser                                                                                  |
-+---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| req_settings  | just a long string which contains settings from the webserver configuration for the html parser                                                                     |
-+---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| variable name     | explanation                                                                                                                                                          |
++===================+======================================================================================================================================================================+
+| HTTP_KEYS         | the variables HTTP_KEYS and HTTP_VALS belongs together. These two array form together a Key/Value Pair. "HTTP_VALS" includes the values from the GET or POST request |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| HTTP_VALS         | the value to the key in occurrence n                                                                                                                                 |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| HTTP_VALS_LENGTH  | the real length of the value in occurrence n                                                                                                                         |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| HTTP_PARM_COUNT   | includes own much entry in value_req/value_length/keys_req are set                                                                                                   |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| HTTP_REQ_TYPE     | which HTTP request was received                                                                                                                                      |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| REALHTML_TMPFILE  | just a internal variable. Contains the file which will be delivered to the browser                                                                                   |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| REALHTML_SETTINGS | just a long string which contains settings from the webserver configuration for the html parser                                                                      |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. _template-vars:
 
 Variables for the template
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You have to create a page group in an external local data area (LDA). Every variable under this group is available in the template. You can redefine variables and create new subgroups. 
+You have to create a group named **page** in an external local data area (LDA). Every variable under this group is available in the template. You can redefine variables and create new subgroups. 
 
 Example:
 --------
@@ -78,7 +79,7 @@ Supported data types
 | Unicode (U)                                         | every/Dynamic |
 +-----------------------------------------------------+---------------+
 
-Every type can be also defined as 1D/2D and 3D arrays but then the dynamic length is not supported. This is due to a bug in the INTERFACE 4 API from the SAG.
+Every type can be also defined as 1D/2D or 3D arrays.
 
 Other
 -----
@@ -104,6 +105,8 @@ Example
 The "flipbuf" function
 ^^^^^^^^^^^^^^^^^^^^^^
 
+**This function should now be obsolete beacuse in the current version the HTTP values are with a dynamic length so you don't have trailing characters.**
+
 The "flipbuf" function shift a specific number of digits from the beginning of the buffer to the end.
 
 For example you want to search for a ISN number with a POST argument. The number in the POST value will be standing on the beginning of the buffer but the ISN number is sitting on the right. With the "value_length" (from the pda. See :ref:`pda`) variable you know how long the number is.
@@ -127,7 +130,7 @@ Example
 .. code-block:: cobolfree
 
   define data local
-     1 post_isn(N19) inti <"1200000000000000000"> /*The value from the post argument
+     1 post_isn(N19) init <"1200000000000000000"> /*The value from the post argument
      1 post_length (I4) init <2>
      1 right_isn(N19)
   end-define
@@ -172,7 +175,7 @@ Example
    define data local
        1 lda_name (A20) init <"mylda">
        1 template_name (A20) init <"mytemplate">
-       1 output_file (A100) init <"/tmp/outout.html">
+       1 output_file (A100) init <"/tmp/output.html">
        1 settings (A) DYNAMIC init <"templatepath=/tmp/templates/;debug=true">
        1 page /* this would be in your external lda
            2 field-1 (A10)
@@ -222,14 +225,13 @@ The PDA
 .. code-block:: cobolfree
 
    DEFINE DATA PARAMETER
-       1 VALUES_REQ (A2024/1:20)
-       1 VALUE_LENGTH (I4/1:20)
-       1 REQ_KEYS (A100/1:20)
-       1 PARM_COUNT (I4)
-       1 REQ_TYPE (A5)
-       1 REQ_FILE (A100)
-       1 REQ_SETTINGS (A) DYNAMIC
-   END-DEFINE
-   
+       1 HTTP_KEYS (A/1:*)
+       1 HTTP_VALS (A/1:*)
+       1 HTTP_VALS_LENGTH (I4/1:*)
+       1 HTTP_PARM_COUNT (I4)
+       1 HTTP_REQ_TYPE (A) DYNAMIC
 
+       1 REALHTML_TMPFILE (A) DYNAMIC
+       1 REALHTML_SETTINGS (A) DYNAMIC
+   END-DEFINE
 

@@ -54,7 +54,7 @@ There are two types of blocks. First the variable block (:code:`{{ ... }}`) whic
 Variable blocks
 ^^^^^^^^^^^^^^^
 
-As in the section :ref:`template-vars` explained you have available every variable that is defined under the page group in your LDA. If a variable is not known the HTML parser will exit with an error message and will be render a error page instead. Currently (Version 1.0) it is not possible to add two variable blocks in one line. The parser would just print out the complete block without parsing it. I am working on this problem.
+As in the section :ref:`template-vars` explained you have available every variable that is defined under the page group in your LDA. If a variable is not known the HTML parser will exit with an error message and will be render a error page instead. Currently (Version 2.0) it is not possible to add two variable blocks in one line. The parser would just print out the complete block without parsing it. I am working on this problem.
 
 Plain variable:
 ---------------
@@ -136,6 +136,18 @@ Example
 .......
 
 :code:`<pre>{% printVars() %}</pre>`
+
+genJSON
+-------
+
+This function will generate a JSON object from the paramaters that where given. A group will create a new JSON object in the ROOT object.
+
+Example
+.......
+
+.. code-block:: jinja
+
+   {% genJSON() %}
 
 
 typeof

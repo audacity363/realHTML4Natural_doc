@@ -64,8 +64,8 @@
 <span class="x">            &lt;tbody&gt;</span>
 <span class="x">            </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">user</span> <span class="k">in</span> <span class="nv">username</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">                &lt;tr&gt;</span>
-<span class="x">                     &lt;td&gt;</span><span class="cp">{{</span> <span class="nv">isnnumber</span><span class="o">[</span><span class="nb">loop</span><span class="nv">.i</span><span class="o">]&lt;/</span><span class="nv">tr</span><span class="o">&gt;</span>
-                     <span class="o">&lt;</span><span class="nv">td</span><span class="o">&gt;{{</span> <span class="nv">user</span> <span class="cp">}}</span><span class="x">&lt;/tr&gt;</span>
+<span class="x">                     &lt;td&gt;</span><span class="cp">{{</span> <span class="nv">isnnumber</span><span class="o">[</span><span class="nb">loop</span><span class="nv">.i</span><span class="o">]</span> <span class="cp">}}</span><span class="x">&lt;/tr&gt;</span>
+<span class="x">                     &lt;td&gt;</span><span class="cp">{{</span> <span class="nv">user</span> <span class="cp">}}</span><span class="x">&lt;/tr&gt;</span>
 <span class="x">                     &lt;td&gt;</span><span class="cp">{{</span> <span class="nv">firstname</span><span class="o">[</span><span class="nb">loop</span><span class="nv">.i</span><span class="o">]</span> <span class="cp">}}</span><span class="x">&lt;/tr&gt;</span>
 <span class="x">                &lt;/tr&gt;</span>
 <span class="x">            </span><span class="cp">{%</span> <span class="k">end</span><span class="o">-</span><span class="nv">for</span> <span class="cp">%}</span><span class="x"></span>
@@ -88,7 +88,7 @@
 </div>
 <div class="section" id="variable-blocks">
 <h2>Variable blocks<a class="headerlink" href="#variable-blocks" title="Permalink to this headline">¶</a></h2>
-<p>As in the section <a class="reference internal" href="natural.html#template-vars"><span class="std std-ref">Variables for the template</span></a> explained you have available every variable that is defined under the page group in your LDA. If a variable is not known the HTML parser will exit with an error message and will be render a error page instead. Currently (Version 1.0) it is not possible to add two variable blocks in one line. The parser would just print out the complete block without parsing it. I am working on this problem.</p>
+<p>As in the section <a class="reference internal" href="natural.html#template-vars"><span class="std std-ref">Variables for the template</span></a> explained you have available every variable that is defined under the page group in your LDA. If a variable is not known the HTML parser will exit with an error message and will be render a error page instead. Currently (Version 2.0) it is not possible to add two variable blocks in one line. The parser would just print out the complete block without parsing it. I am working on this problem.</p>
 <div class="section" id="plain-variable">
 <h3>Plain variable:<a class="headerlink" href="#plain-variable" title="Permalink to this headline">¶</a></h3>
 <p>Let&#8217;s assume that you have defined a variable with the name &#8220;varname&#8221; which has the type alphanumeric with the length of 20 bytes. When you just write <code class="code docutils literal"><span class="pre">{{</span> <span class="pre">varname</span> <span class="pre">}}</span></code> it would be replaced with the value. But you can also handle it as an array by adding square brackets after the name: <code class="code docutils literal"><span class="pre">{{</span> <span class="pre">varname[0]</span> <span class="pre">}}</span></code>. Now you would get the value saved at the position zero of the variable. If you have spaces at the end the parser will automatically trim the value to the last non space character.</p>
@@ -144,27 +144,57 @@
 <p><code class="code docutils literal"><span class="pre">&lt;pre&gt;{%</span> <span class="pre">printVars()</span> <span class="pre">%}&lt;/pre&gt;</span></code></p>
 </div>
 </div>
+<div class="section" id="genjson">
+<h3>genJSON<a class="headerlink" href="#genjson" title="Permalink to this headline">¶</a></h3>
+<p>This function will generate a JSON object from the paramaters that where given. A group will create a new JSON object in the ROOT object.</p>
+<div class="section" id="id3">
+<h4>Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>Variables:</p>
+<div class="highlight-cobolfree"><div class="highlight"><pre><span></span><span class="nv">DEFINE</span> <span class="kr">DATA</span> <span class="nv">LOCAL</span>
+    <span class="mi">1 </span><span class="nv">VAR1</span> <span class="p">(</span><span class="nv">A10</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">)</span> <span class="nv">init</span> <span class="o">&lt;</span><span class="s2">&quot;val1&quot;</span><span class="p">,</span> <span class="s2">&quot;val2&quot;</span><span class="p">,</span> <span class="s2">&quot;val3&quot;</span><span class="p">,</span> <span class="s2">&quot;val4&quot;</span><span class="p">,</span> <span class="s2">&quot;val5&quot;</span><span class="o">&gt;</span>
+    <span class="mi">2 </span><span class="nv">GRP1</span>
+     <span class="mi">3 </span><span class="nv">VAR2</span> <span class="p">(</span><span class="nv">I4</span><span class="p">)</span> <span class="nv">init</span> <span class="o">&lt;</span><span class="mi">63</span><span class="o">&gt;</span>
+     <span class="mi">3 </span><span class="nv">VAR3</span> <span class="p">(</span><span class="nv">A20</span><span class="p">)</span> <span class="nv">init</span> <span class="o">&lt;</span><span class="s2">&quot;Hello World&quot;</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">genJSON</span><span class="o">(</span><span class="nv">VAR1</span><span class="o">,</span> <span class="nv">GRP1</span><span class="o">)</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;VAR1&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;val1&quot;</span><span class="p">,</span> <span class="s2">&quot;val2&quot;</span><span class="p">,</span> <span class="s2">&quot;val3&quot;</span><span class="p">,</span> <span class="s2">&quot;val4&quot;</span><span class="p">,</span> <span class="s2">&quot;val5&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;GRP1&quot;</span><span class="o">:</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;VAR2&quot;</span><span class="o">:</span> <span class="mi">63</span><span class="p">,</span>
+        <span class="s2">&quot;VAR3&quot;</span><span class="o">:</span> <span class="s2">&quot;Hello World&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="typeof">
 <h3>typeof<a class="headerlink" href="#typeof" title="Permalink to this headline">¶</a></h3>
 <p>Prints out the type of the variable which is given as a argument.</p>
-<div class="section" id="id3">
-<h4>Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id4">
+<h4>Example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <p><code class="code docutils literal"><span class="pre">{%</span> <span class="pre">typeof(varname)</span> <span class="pre">%}</span></code></p>
 </div>
 </div>
 <div class="section" id="import">
 <h3>import<a class="headerlink" href="#import" title="Permalink to this headline">¶</a></h3>
+<p><strong>Currently only in the Version 1.0 available and not in the 2.0_beta. In the next parser version it will be available again.</strong></p>
 <p>Imports another template that is provided after the import statement with quotation marks. This path is relative to the template_path defined in the <a class="reference internal" href="webserver.html#webserver-config"><span class="std std-ref">Server configuration</span></a>. The new template is parsed with the variable scope of the root template. It is planed to provide a second parameter which makes it possible to call a second natural program for this template.</p>
-<div class="section" id="id4">
-<h4>Example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id5">
+<h4>Example<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <p><code class="code docutils literal"><span class="pre">{%</span> <span class="pre">import</span> <span class="pre">&quot;navbar.html&quot;</span> <span class="pre">%}</span></code></p>
 </div>
 </div>
 <div class="section" id="macro">
 <h3>macro<a class="headerlink" href="#macro" title="Permalink to this headline">¶</a></h3>
 <p>Macros are like function you define them in a block and call them later on. You can define two types of parameter required and optional. The optional ones must be defined at the end and have a default value.</p>
-<div class="section" id="id5">
-<h4>Example<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id6">
+<h4>Example<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">macro</span> <span class="nv">renderButton</span><span class="o">(</span><span class="nv">btn_text</span><span class="o">,</span> <span class="nv">btn_type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span><span class="o">)</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">    &lt;button type=&quot;</span><span class="cp">{{</span> <span class="nv">btn_type</span> <span class="cp">}}</span><span class="x">&quot;&gt;btn_text&lt;/button&gt;</span>
 <span class="cp">{%</span> <span class="k">end</span><span class="o">-</span><span class="nv">macro</span> <span class="cp">%}</span><span class="x"></span>
@@ -180,6 +210,10 @@
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="perview-versions">
+<h2>Perview Versions<a class="headerlink" href="#perview-versions" title="Permalink to this headline">¶</a></h2>
+<p>When you want to life dangerous you can get the develop version from the parser <a class="reference external" href="https://github.com/audacity363/realHTMLparser">here</a>. But there is no documentation for this version (The code speaks for itself) nor can I promise that it will work after every commit.</p>
 </div>
 </div>
 
@@ -211,20 +245,25 @@
 <li><a class="reference internal" href="#id2">Example</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#typeof">typeof</a><ul>
+<li><a class="reference internal" href="#genjson">genJSON</a><ul>
 <li><a class="reference internal" href="#id3">Example</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#import">import</a><ul>
+<li><a class="reference internal" href="#typeof">typeof</a><ul>
 <li><a class="reference internal" href="#id4">Example</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#macro">macro</a><ul>
+<li><a class="reference internal" href="#import">import</a><ul>
 <li><a class="reference internal" href="#id5">Example</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#macro">macro</a><ul>
+<li><a class="reference internal" href="#id6">Example</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a class="reference internal" href="#perview-versions">Perview Versions</a></li>
 </ul>
 </li>
 </ul>

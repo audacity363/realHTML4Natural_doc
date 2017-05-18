@@ -27,7 +27,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Html Parser" href="html-parser.html" />
-    <link rel="prev" title="Tomcat Connector" href="connector.html" />
+    <link rel="prev" title="Webserver" href="webserver.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -48,21 +48,22 @@
 <div class="section" id="parameter-data-area">
 <span id="pda"></span><h2>Parameter Data Area<a class="headerlink" href="#parameter-data-area" title="Permalink to this headline">¶</a></h2>
 <p>A parameter data area like this has to been defined. You don&#8217;t have to take this exact names but the type and length has to match.</p>
-<div class="highlight-cobolfree"><div class="highlight"><pre><span></span><span class="mi">1 </span><span class="nv">VALUES_REQ</span> <span class="p">(</span><span class="nv">A2024</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
-<span class="mi">1 </span><span class="nv">VALUE_LENGTH</span> <span class="p">(</span><span class="nv">I4</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
-<span class="mi">1 </span><span class="nv">KEYS_REQ</span> <span class="p">(</span><span class="nv">A100</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
-<span class="mi">1 </span><span class="nv">PARM_COUNT</span> <span class="p">(</span><span class="nv">I4</span><span class="p">)</span>
-<span class="mi">1 </span><span class="nv">REQ_TYPE</span> <span class="p">(</span><span class="nv">A5</span><span class="p">)</span>
-<span class="mi">1 </span><span class="nv">REQ_FILE</span> <span class="p">(</span><span class="nv">A100</span><span class="p">)</span>
-<span class="mi">1 </span><span class="nv">REQ_SETTINGS</span> <span class="p">(</span><span class="nv">A</span><span class="p">)</span> <span class="kp">DYNAMIC</span>
+<div class="highlight-cobolfree"><div class="highlight"><pre><span></span><span class="mi">1 </span><span class="nv">HTTP_KEYS</span> <span class="p">(</span><span class="nv">A</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="o">*</span><span class="p">)</span>
+<span class="mi">1 </span><span class="nv">HTTP_VALS</span> <span class="p">(</span><span class="nv">A</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="o">*</span><span class="p">)</span>
+<span class="mi">1 </span><span class="nv">HTTP_VALS_LENGTH</span> <span class="p">(</span><span class="nv">I4</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="o">*</span><span class="p">)</span>
+<span class="mi">1 </span><span class="nv">HTTP_PARM_COUNT</span> <span class="p">(</span><span class="nv">I4</span><span class="p">)</span>
+<span class="mi">1 </span><span class="nv">HTTP_REQ_TYPE</span> <span class="p">(</span><span class="nv">A</span><span class="p">)</span> <span class="kp">DYNAMIC</span>
+
+<span class="mi">1 </span><span class="nv">REALHTML_TMPFILE</span> <span class="p">(</span><span class="nv">A</span><span class="p">)</span> <span class="kp">DYNAMIC</span>
+<span class="mi">1 </span><span class="nv">REALHTML_SETTINGS</span> <span class="p">(</span><span class="nv">A</span><span class="p">)</span> <span class="kp">DYNAMIC</span>
 </pre></div>
 </div>
 <div class="section" id="explanation-parameter-data-area">
 <h3>Explanation parameter data area<a class="headerlink" href="#explanation-parameter-data-area" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
-<col width="8%" />
-<col width="92%" />
+<col width="10%" />
+<col width="90%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">variable name</th>
@@ -70,25 +71,25 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>value_req</td>
-<td>the variables value_req and keys_req belongs together. These two array form together a Key/Value Pair. &#8220;value_req&#8221; includes the values from the GET or POST request</td>
+<tr class="row-even"><td>HTTP_KEYS</td>
+<td>the variables HTTP_KEYS and HTTP_VALS belongs together. These two array form together a Key/Value Pair. &#8220;HTTP_VALS&#8221; includes the values from the GET or POST request</td>
 </tr>
-<tr class="row-odd"><td>value_length</td>
+<tr class="row-odd"><td>HTTP_VALS</td>
+<td>the value to the key in occurrence n</td>
+</tr>
+<tr class="row-even"><td>HTTP_VALS_LENGTH</td>
 <td>the real length of the value in occurrence n</td>
 </tr>
-<tr class="row-even"><td>keys_req</td>
-<td>the key to the value in occurrence n</td>
+<tr class="row-odd"><td>HTTP_PARM_COUNT</td>
+<td>includes own much entry the arrays HTTP_KEYS, HTTP_VALS and HTTP_VALS_LENGTH have</td>
 </tr>
-<tr class="row-odd"><td>parm_count</td>
-<td>includes own much entry in value_req/value_length/keys_req are set</td>
-</tr>
-<tr class="row-even"><td>req_type</td>
+<tr class="row-even"><td>HTTP_REQ_TYPE</td>
 <td>which HTTP request was received</td>
 </tr>
-<tr class="row-odd"><td>req_file</td>
+<tr class="row-odd"><td>REALHTML_TMPFILE</td>
 <td>just a internal variable. Contains the file which will be delivered to the browser</td>
 </tr>
-<tr class="row-even"><td>req_settings</td>
+<tr class="row-even"><td>REALHTML_SETTINGS</td>
 <td>just a long string which contains settings from the webserver configuration for the html parser</td>
 </tr>
 </tbody>
@@ -97,7 +98,7 @@
 </div>
 <div class="section" id="variables-for-the-template">
 <span id="template-vars"></span><h2>Variables for the template<a class="headerlink" href="#variables-for-the-template" title="Permalink to this headline">¶</a></h2>
-<p>You have to create a page group in an external local data area (LDA). Every variable under this group is available in the template. You can redefine variables and create new subgroups.</p>
+<p>You have to create a group named <strong>page</strong> in an external local data area (LDA). Every variable under this group is available in the template. You can redefine variables and create new subgroups.</p>
 <div class="section" id="example">
 <h3>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cobolfree"><div class="highlight"><pre><span></span><span class="nv">define</span> <span class="kr">data</span> <span class="nv">local</span>
@@ -139,7 +140,7 @@
 </tr>
 </tbody>
 </table>
-<p>Every type can be also defined as 1D/2D and 3D arrays but then the dynamic length is not supported. This is due to a bug in the INTERFACE 4 API from the SAG.</p>
+<p>Every type can be also defined as 1D/2D or 3D arrays.</p>
 </div>
 <div class="section" id="other">
 <h3>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h3>
@@ -163,6 +164,7 @@
 </div>
 <div class="section" id="the-flipbuf-function">
 <h2>The &#8220;flipbuf&#8221; function<a class="headerlink" href="#the-flipbuf-function" title="Permalink to this headline">¶</a></h2>
+<p><strong>This function should now be obsolete beacuse in the current version the HTTP values are with a dynamic length so you don&#8217;t have trailing characters.</strong></p>
 <p>The &#8220;flipbuf&#8221; function shift a specific number of digits from the beginning of the buffer to the end.</p>
 <p>For example you want to search for a ISN number with a POST argument. The number in the POST value will be standing on the beginning of the buffer but the ISN number is sitting on the right. With the &#8220;value_length&#8221; (from the pda. See <a class="reference internal" href="#pda"><span class="std std-ref">Parameter Data Area</span></a>) variable you know how long the number is.</p>
 <div class="section" id="arguments">
@@ -198,7 +200,7 @@
 <div class="section" id="id2">
 <h3>Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cobolfree"><div class="highlight"><pre><span></span><span class="nv">define</span> <span class="kr">data</span> <span class="nv">local</span>
-   <span class="mi">1 </span><span class="nv">post_isn</span><span class="p">(</span><span class="nv">N19</span><span class="p">)</span> <span class="nv">inti</span> <span class="o">&lt;</span><span class="s2">&quot;1200000000000000000&quot;</span><span class="o">&gt;</span> <span class="o">/*</span><span class="nv">The</span> <span class="kp">value</span> <span class="kp">from</span> <span class="nv">the</span> <span class="nv">post</span> <span class="nv">argument</span>
+   <span class="mi">1 </span><span class="nv">post_isn</span><span class="p">(</span><span class="nv">N19</span><span class="p">)</span> <span class="nv">init</span> <span class="o">&lt;</span><span class="s2">&quot;1200000000000000000&quot;</span><span class="o">&gt;</span> <span class="o">/*</span><span class="nv">The</span> <span class="kp">value</span> <span class="kp">from</span> <span class="nv">the</span> <span class="nv">post</span> <span class="nv">argument</span>
    <span class="mi">1 </span><span class="nv">post_length</span> <span class="p">(</span><span class="nv">I4</span><span class="p">)</span> <span class="nv">init</span> <span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span>
    <span class="mi">1 </span><span class="nv">right_isn</span><span class="p">(</span><span class="nv">N19</span><span class="p">)</span>
 <span class="nv">end-define</span>
@@ -234,7 +236,7 @@
 <tbody valign="top">
 <tr class="row-even"><td>1</td>
 <td>Alphanumeric (A20)</td>
-<td>name of the LDA</td>
+<td>name of the lda</td>
 </tr>
 <tr class="row-odd"><td>2</td>
 <td>Alphanumeric (A20)</td>
@@ -250,7 +252,7 @@
 </tr>
 <tr class="row-even"><td>5</td>
 <td>see <a class="reference internal" href="#datatypes"><span class="std std-ref">Supported data types</span></a></td>
-<td>the page group from your LDA</td>
+<td>the page group from your lda</td>
 </tr>
 </tbody>
 </table>
@@ -260,7 +262,7 @@
 <div class="highlight-cobolfree"><div class="highlight"><pre><span></span><span class="nv">define</span> <span class="kr">data</span> <span class="nv">local</span>
     <span class="mi">1 </span><span class="nv">lda_name</span> <span class="p">(</span><span class="nv">A20</span><span class="p">)</span> <span class="nv">init</span> <span class="o">&lt;</span><span class="s2">&quot;mylda&quot;</span><span class="o">&gt;</span>
     <span class="mi">1 </span><span class="nv">template_name</span> <span class="p">(</span><span class="nv">A20</span><span class="p">)</span> <span class="nv">init</span> <span class="o">&lt;</span><span class="s2">&quot;mytemplate&quot;</span><span class="o">&gt;</span>
-    <span class="mi">1 </span><span class="nv">output_file</span> <span class="p">(</span><span class="nv">A100</span><span class="p">)</span> <span class="nv">init</span> <span class="o">&lt;</span><span class="s2">&quot;/tmp/outout.html&quot;</span><span class="o">&gt;</span>
+    <span class="mi">1 </span><span class="nv">output_file</span> <span class="p">(</span><span class="nv">A100</span><span class="p">)</span> <span class="nv">init</span> <span class="o">&lt;</span><span class="s2">&quot;/tmp/output.html&quot;</span><span class="o">&gt;</span>
     <span class="mi">1 </span><span class="nv">settings</span> <span class="p">(</span><span class="nv">A</span><span class="p">)</span> <span class="kp">DYNAMIC</span> <span class="nv">init</span> <span class="o">&lt;</span><span class="s2">&quot;templatepath=/tmp/templates/;debug=true&quot;</span><span class="o">&gt;</span>
     <span class="mi">1 </span><span class="kp">page </span><span class="o">/*</span> <span class="nv">this</span> <span class="nv">would</span> <span class="nv">be</span> <span class="kp">in</span> <span class="nv">your</span> <span class="kp">external</span> <span class="nv">lda</span>
         <span class="mi">2 </span><span class="nv">field-1</span> <span class="p">(</span><span class="nv">A10</span><span class="p">)</span>
@@ -307,13 +309,14 @@
 <div class="section" id="the-pda">
 <h3>The PDA<a class="headerlink" href="#the-pda" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cobolfree"><div class="highlight"><pre><span></span><span class="nv">DEFINE</span> <span class="kr">DATA</span> <span class="nv">PARAMETER</span>
-    <span class="mi">1 </span><span class="nv">VALUES_REQ</span> <span class="p">(</span><span class="nv">A2024</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
-    <span class="mi">1 </span><span class="nv">VALUE_LENGTH</span> <span class="p">(</span><span class="nv">I4</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
-    <span class="mi">1 </span><span class="nv">REQ_KEYS</span> <span class="p">(</span><span class="nv">A100</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
-    <span class="mi">1 </span><span class="nv">PARM_COUNT</span> <span class="p">(</span><span class="nv">I4</span><span class="p">)</span>
-    <span class="mi">1 </span><span class="nv">REQ_TYPE</span> <span class="p">(</span><span class="nv">A5</span><span class="p">)</span>
-    <span class="mi">1 </span><span class="nv">REQ_FILE</span> <span class="p">(</span><span class="nv">A100</span><span class="p">)</span>
-    <span class="mi">1 </span><span class="nv">REQ_SETTINGS</span> <span class="p">(</span><span class="nv">A</span><span class="p">)</span> <span class="kp">DYNAMIC</span>
+    <span class="mi">1 </span><span class="nv">HTTP_KEYS</span> <span class="p">(</span><span class="nv">A</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="o">*</span><span class="p">)</span>
+    <span class="mi">1 </span><span class="nv">HTTP_VALS</span> <span class="p">(</span><span class="nv">A</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="o">*</span><span class="p">)</span>
+    <span class="mi">1 </span><span class="nv">HTTP_VALS_LENGTH</span> <span class="p">(</span><span class="nv">I4</span><span class="o">/</span><span class="mi">1</span><span class="p">:</span><span class="o">*</span><span class="p">)</span>
+    <span class="mi">1 </span><span class="nv">HTTP_PARM_COUNT</span> <span class="p">(</span><span class="nv">I4</span><span class="p">)</span>
+    <span class="mi">1 </span><span class="nv">HTTP_REQ_TYPE</span> <span class="p">(</span><span class="nv">A</span><span class="p">)</span> <span class="kp">DYNAMIC</span>
+
+<span class="kp">   </span> <span class="mi">1 </span><span class="nv">REALHTML_TMPFILE</span> <span class="p">(</span><span class="nv">A</span><span class="p">)</span> <span class="kp">DYNAMIC</span>
+<span class="kp">   </span> <span class="mi">1 </span><span class="nv">REALHTML_SETTINGS</span> <span class="p">(</span><span class="nv">A</span><span class="p">)</span> <span class="kp">DYNAMIC</span>
 <span class="nv">END-DEFINE</span>
 </pre></div>
 </div>
@@ -367,7 +370,7 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="connector.html" title="previous chapter">Tomcat Connector</a></li>
+      <li>Previous: <a href="webserver.html" title="previous chapter">Webserver</a></li>
       <li>Next: <a href="html-parser.html" title="next chapter">Html Parser</a></li>
   </ul></li>
 </ul>

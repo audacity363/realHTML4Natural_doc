@@ -10,34 +10,34 @@ A parameter data area like this has to been defined. You don't have to take this
 
 .. code-block:: cobolfree
 
-   1 VALUES_REQ (A2024/1:20)
-   1 VALUE_LENGTH (I4/1:20)
-   1 KEYS_REQ (A100/1:20)
-   1 PARM_COUNT (I4)
-   1 REQ_TYPE (A5)
-   1 REQ_FILE (A100)
-   1 REQ_SETTINGS (A) DYNAMIC
+   1 HTTP_KEYS (A/1:*)
+   1 HTTP_VALS (A/1:*)
+   1 HTTP_VALS_LENGTH (I4/1:*)
+   1 HTTP_PARM_COUNT (I4)
+   1 HTTP_REQ_TYPE (A) DYNAMIC
 
+   1 REALHTML_TMPFILE (A) DYNAMIC
+   1 REALHTML_SETTINGS (A) DYNAMIC
 
 Explanation parameter data area
 -------------------------------
 
 +---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| variable name | explanation                                                                                                                                                         |
+| variable name    | explanation                                                                                                                                                         |
 +===============+=====================================================================================================================================================================+
-| value_req     | the variables value_req and keys_req belongs together. These two array form together a Key/Value Pair. "value_req" includes the values from the GET or POST request |
+| HTTP_KEYS         | the variables HTTP_KEYS and HTTP_VALS belongs together. These two array form together a Key/Value Pair. "HTTP_VALS" includes the values from the GET or POST request |
 +---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| value_length  | the real length of the value in occurrence n                                                                                                                        |
+| HTTP_VALS         | the key to the value in occurrence n
 +---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| keys_req      | the key to the value in occurrence n                                                                                                                                |
+| HTTP_VALS_LENGTH  | the real length of the value in occurrence n                                                                                                                        |
 +---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| parm_count    | includes own much entry in value_req/value_length/keys_req are set                                                                                                  |
+| HTTP_PARM_COUNT   | includes own much entry in value_req/value_length/keys_req are set                                                                                                  |
 +---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| req_type      | which HTTP request was received                                                                                                                                     |
+| HTTP_REQ_TYPE     | which HTTP request was received                                                                                                                                     |
 +---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| req_file      | just a internal variable. Contains the file which will be delivered to the browser                                                                                  |
+| REALHTML_TMPFILE  | just a internal variable. Contains the file which will be delivered to the browser                                                                                  |
 +---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| req_settings  | just a long string which contains settings from the webserver configuration for the html parser                                                                     |
+| REALHTML_SETTINGS | just a long string which contains settings from the webserver configuration for the html parser                                                                     |
 +---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. _template-vars:
@@ -153,7 +153,7 @@ Arguments
 +--------+--------------------------+-----------------------------------------------------+
 | number | type                     | purpose                                             |
 +========+==========================+=====================================================+
-| 1      | Alphanumeric (A20)       | name of the LDA                                     |
+| 1      | Alphanumeric (A20)       | name of the lda                                     |
 +--------+--------------------------+-----------------------------------------------------+
 | 2      | Alphanumeric (A20)       | name of the template                                |
 +--------+--------------------------+-----------------------------------------------------+
@@ -161,7 +161,7 @@ Arguments
 +--------+--------------------------+-----------------------------------------------------+
 | 4      | Alphanumeric (A Dynamic) | settings string                                     |
 +--------+--------------------------+-----------------------------------------------------+
-| 5      | see :ref:`datatypes`     | the page group from your LDA                        |
+| 5      | see :ref:`datatypes`     | the page group from your lda                        |
 +--------+--------------------------+-----------------------------------------------------+
 
 Example
