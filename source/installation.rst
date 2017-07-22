@@ -3,30 +3,25 @@ Build process and Installation
 
 Build
 ^^^^^
+When you don't want to build the framework yourself every version since 2.0 is avalible as a precompiled binary on the `release page<https://github.com/audacity363/realHTML4Natural/releases/>`_ over at GitHub.
 
-Unfortunately the build process is currently very manual.
-The libraries in the folder "libs" are build with the Makefile in the root directory. Except the library "mxml", it has its own makefile. 
-The rest of the libraries outside of "libs" has there own makefiles.
-So you have to edit the following Makefiles and change the $CC variable to your compiler (where ./ is the root folder from the repository):
+But when you want to build it yourself it is very easy:
 
-- ./web_server/Makefile
-- ./var2names/Makefile
-- ./libs/mxml/Makefile
-- ./Makefile
-- ./Makedyn
+There are two types of Makefiles for the different make programs: 
 
-You also have to have the shared object "libnatural.so" from the Software AG in your "LIBPATH" Environment variable. It should be located in your Natural bin directory.
-Now you should be able to just type in "make all" in the root folder and the complete project will be build in the right order.
+- IBMs make
+- GNUs make
+
+Every modul have a Makefile for this "make" types. When you want do compile the complete framework you can use the Makefile in the root directory.
+
+When you don't want do build it on your system there are docker files for creating docker images with a gcc compiler.
+
 
 Installation
 ^^^^^^^^^^^^
 
-There is no real installation yet but there are just two core binaries to copy:
+There is no real installation but there is just a core binaries to copy:
 
-- ./jinja2.so
-- ./web_server/miniweb
+- ./natuser_lib/librealHTML4Natural.so
 
-"jinja.so" is the shared object which provides the INTERFACE 4 functions "genpage" and "flipbuf". It must be mentioned in your NATUSER Env-var. 
-
-"miniweb" is the web server. It is good practice to put it into your "/usr/bin/" folder so it is in your PATH variable and can be found by just typing "miniweb". The configuration files of the server you can put everywhere.
-I am a fan of creating a directory in "/etc" which is called "realHTML4Natural" and putting all the configuration stuff in there.
+This is the shared object which provides the INTERFACE 4 functions "genpage" and "flipbuf". It must be mentioned in your NATUSER Env-var. 
