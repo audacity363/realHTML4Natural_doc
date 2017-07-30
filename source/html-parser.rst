@@ -222,7 +222,7 @@ Output:
    <button type="reset">Hello World</button>
    <button type="submit">Hello World</button>
 
-Perview Versions
+Preview Versions
 ^^^^^^^^^^^^^^^^
 
 When you want to life dangerous you can get the develop version from the parser `here <https://github.com/audacity363/realHTMLparser>`_. But there is no documentation for this version (The code speaks for itself) nor can I promise that it will work after every commit. 
