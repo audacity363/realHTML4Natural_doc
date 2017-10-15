@@ -32,6 +32,8 @@ Guide:
    natural
    html-parser
    workflow
+   user_exits/genjson
+   user_exits/genjsono
    
 
 
