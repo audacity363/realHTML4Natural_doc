@@ -36,6 +36,8 @@ Guide:
    workflow
    user_exits/genjson
    user_exits/genjsono
+   user_exits/getjson
+   user_exits/returncodes
    
 
 

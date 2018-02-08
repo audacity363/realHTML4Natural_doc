@@ -1,8 +1,52 @@
 Build process and Installation
 ===============================
 
-Build
-^^^^^
+Build with Bash
+^^^^^^^^^^^^^^^
+
+When you have bash installed you just have to have to run the script "build.sh" from the repository. This script will search for a compiler, linker and java. With this informations a Makefile get's generated and executed.
+
+Build without Bash
+^^^^^^^^^^^^^^^^^^
+
+When you don't have a bash installed you have to copy the file "Makefile.rh4n" to "Makefile" and edit his content.
+
+Replace the value of following make variable:
+
+{{CC}}
+------
+
+This is the path to your c compiler. XLC or GCC.
+
+{{AR}}
+------
+
+This is the path to your ar binary.
+
+{{CARGS1}}
+----------
+
+This are agruments for the compiler wich must be set before any source files.
+
+Most likely for GCC: -c -g -fPIC
+
+Most likely for GCC: -c -g -fpic
+
+
+{{CARGS2}}
+----------
+
+This are agruments for the compiler after specifed the outputfile
+Currently this can be set to a empty str
+
+
+
+
+
+
+
+
+
 When you don't want to build the framework yourself every version since 2.0 is avalible as a precompiled binary on the `release page<https://github.com/audacity363/realHTML4Natural/releases/>`_ over at GitHub.
 
 But when you want to build it yourself it is very easy:

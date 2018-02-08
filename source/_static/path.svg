@@ -432,9 +432,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="9.1190741"
-     inkscape:cx="146.80533"
-     inkscape:cy="601.77985"
+     inkscape:zoom="2.2797685"
+     inkscape:cx="42.87282"
+     inkscape:cy="537.16605"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -772,16 +772,21 @@
        inkscape:export-filename="/tmp/test.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
-    <rect
-       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.34710357;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill"
-       id="rect7310"
-       width="121.44375"
-       height="85.989586"
-       x="2.9104166"
-       y="19.1875"
-       inkscape:export-filename="/tmp/test.png"
-       inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96" />
+    <a
+       xlink:href="../connector.html"
+       target="_top"
+       id="a14826">
+      <rect
+         inkscape:export-ydpi="96"
+         inkscape:export-xdpi="96"
+         inkscape:export-filename="/tmp/test.png"
+         y="19.1875"
+         x="2.9104166"
+         height="85.989586"
+         width="121.44375"
+         id="rect7310"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.34710357;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill" />
+    </a>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:3.17499995px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
