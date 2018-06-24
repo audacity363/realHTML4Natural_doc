@@ -1,0 +1,159 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Build process and Installation &#8212; realHTML4Natural 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tomcat Connector" href="connector.html" />
+    <link rel="prev" title="realHTML4Natural Documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="build-process-and-installation">
+<h1>Build process and Installation<a class="headerlink" href="#build-process-and-installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="build-with-bash">
+<h2>Build with Bash<a class="headerlink" href="#build-with-bash" title="Permalink to this headline">¶</a></h2>
+<p>When you have bash installed you just have to have to run the script “build.sh” from the repository. This script will search for a compiler, linker and java. With this informations a Makefile get’s generated and executed.</p>
+</div>
+<div class="section" id="build-without-bash">
+<h2>Build without Bash<a class="headerlink" href="#build-without-bash" title="Permalink to this headline">¶</a></h2>
+<p>When you don’t have a bash installed you have to copy the file “Makefile.rh4n” to “Makefile” and edit his content.</p>
+<p>Replace the value of following make variable:</p>
+<div class="section" id="cc">
+<h3>{{CC}}<a class="headerlink" href="#cc" title="Permalink to this headline">¶</a></h3>
+<p>This is the path to your c compiler. XLC or GCC.</p>
+</div>
+<div class="section" id="ar">
+<h3>{{AR}}<a class="headerlink" href="#ar" title="Permalink to this headline">¶</a></h3>
+<p>This is the path to your ar binary.</p>
+</div>
+<div class="section" id="cargs1">
+<h3>{{CARGS1}}<a class="headerlink" href="#cargs1" title="Permalink to this headline">¶</a></h3>
+<p>This are agruments for the compiler wich must be set before any source files.</p>
+<p>Most likely for GCC: -c -g -fPIC</p>
+<p>Most likely for GCC: -c -g -fpic</p>
+</div>
+<div class="section" id="cargs2">
+<h3>{{CARGS2}}<a class="headerlink" href="#cargs2" title="Permalink to this headline">¶</a></h3>
+<p>This are agruments for the compiler after specifed the outputfile
+Currently this can be set to a empty str</p>
+<p>When you don’t want to build the framework yourself every version since 2.0 is avalible as a precompiled binary on the <a href="#id1"><span class="problematic" id="id2">`release page&lt;https://github.com/audacity363/realHTML4Natural/releases/&gt;`_</span></a> over at GitHub.</p>
+<p>But when you want to build it yourself it is very easy:</p>
+<p>There are two types of Makefiles for the different make programs:</p>
+<ul class="simple">
+<li>IBMs make</li>
+<li>GNUs make</li>
+</ul>
+<p>Every modul have a Makefile for this “make” types. When you want do compile the complete framework you can use the Makefile in the root directory.</p>
+<p>When you don’t want do build it on your system there are docker files for creating docker images with a gcc compiler.</p>
+</div>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>There is no real installation but there is just a core binaries to copy:</p>
+<ul class="simple">
+<li>./natuser_lib/librealHTML4Natural.so</li>
+</ul>
+<p>This is the shared object which provides the INTERFACE 4 functions “genpage” and “flipbuf”. It must be mentioned in your NATUSER Env-var.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Build process and Installation</a><ul>
+<li><a class="reference internal" href="#build-with-bash">Build with Bash</a></li>
+<li><a class="reference internal" href="#build-without-bash">Build without Bash</a><ul>
+<li><a class="reference internal" href="#cc">{{CC}}</a></li>
+<li><a class="reference internal" href="#ar">{{AR}}</a></li>
+<li><a class="reference internal" href="#cargs1">{{CARGS1}}</a></li>
+<li><a class="reference internal" href="#cargs2">{{CARGS2}}</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">realHTML4Natural Documentation</a></li>
+      <li>Next: <a href="connector.html" title="next chapter">Tomcat Connector</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/installation.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Tom Engemann.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/installation.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

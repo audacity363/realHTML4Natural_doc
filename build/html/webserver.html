@@ -1,0 +1,335 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Webserver &#8212; realHTML4Natural 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Natural" href="natural.html" />
+    <link rel="prev" title="Tomcat Connector" href="connector.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="webserver">
+<h1>Webserver<a class="headerlink" href="#webserver" title="Permalink to this headline">¶</a></h1>
+<p><strong>The Webserver is highly deprecated! Dont use it anymore. Use instead the</strong> <a class="reference internal" href="connector.html#tomcat-connector"><span class="std std-ref">Tomcat Connector</span></a></p>
+<p>The webserver is based on the open source project miniweb (<a class="reference external" href="http://www.http://miniweb.sourceforge.net/">http://www.http://miniweb.sourceforge.net/</a>) but this version is heavily modified.</p>
+<p>This version can parse POST Requests where data is urlencoded and not an multipart message, read cookies and set new ones and of course calling Natural programs.</p>
+<p>There are two configuration files that miniweb can use. A general configuration file with how the server should be configured and a file which controls when which Natural program is called.</p>
+<div class="section" id="server-configuration">
+<span id="webserver-config"></span><h2>Server configuration<a class="headerlink" href="#server-configuration" title="Permalink to this headline">¶</a></h2>
+<p>The path to this file is stored in the environment variable “WEBCONFIG”. It can contain multiple environments. For example a configuration for test and one for production.</p>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;miniweb&gt;</span>
+    <span class="nt">&lt;environment</span> <span class="na">type=</span><span class="s">&quot;test&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;routes&gt;</span>/home/tom/C/realHtml4Natural/web_server/routes.xml<span class="nt">&lt;/routes&gt;</span>
+        <span class="nt">&lt;htdocs&gt;</span>/home/tom/C/realHtml4Natural/web_server/htdocs/<span class="nt">&lt;/htdocs&gt;</span>
+        <span class="nt">&lt;templates&gt;</span>/home/tom/C/realHtml4Natural/web_server/templates/<span class="nt">&lt;/templates&gt;</span>
+        <span class="nt">&lt;natsourcepath&gt;</span>/natural/natsrc/<span class="nt">&lt;/natsourcepath&gt;</span>
+        <span class="nt">&lt;port&gt;</span>1024<span class="nt">&lt;/port&gt;</span>
+        <span class="nt">&lt;debug&gt;</span>true<span class="nt">&lt;/debug&gt;</span>
+        <span class="nt">&lt;naterror&gt;</span>nat_error.html<span class="nt">&lt;/naterror&gt;</span>
+        <span class="nt">&lt;ldaerror&gt;&lt;/ldaerror&gt;</span>
+        <span class="nt">&lt;parsererror&gt;&lt;/parsererror&gt;</span>
+        <span class="nt">&lt;natparms&gt;&lt;/natparms&gt;</span>
+    <span class="nt">&lt;/environment&gt;</span>
+    <span class="nt">&lt;environment</span> <span class="na">type=</span><span class="s">&quot;production&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;routes&gt;</span>/home/tom/C/realHtml4Natural/web_server/routes_prod.xml<span class="nt">&lt;/routes&gt;</span>
+        <span class="nt">&lt;htdocs&gt;</span>/home/tom/C/realHtml4Natural/web_server/htdocs/<span class="nt">&lt;/htdocs&gt;</span>
+        <span class="nt">&lt;templates&gt;</span>/home/tom/C/realHtml4Natural/web_server/templates/<span class="nt">&lt;/templates&gt;</span>
+    <span class="nt">&lt;/environment&gt;</span>
+<span class="nt">&lt;/miniweb&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="explanation-enviroment-tag">
+<h3>Explanation enviroment tag<a class="headerlink" href="#explanation-enviroment-tag" title="Permalink to this headline">¶</a></h3>
+<p>With the environment tag you can setup multiple environments in which the server is running. It takes exactly one argument. The type attribute with the name of the environment.</p>
+</div>
+<div class="section" id="explanation-enviroment-childs">
+<h3>Explanation enviroment childs<a class="headerlink" href="#explanation-enviroment-childs" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="73%" />
+<col width="11%" />
+<col width="7%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">entry</th>
+<th class="head">explanation</th>
+<th class="head">default Value</th>
+<th class="head">required</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>routes</td>
+<td>the path to the routes configuration file</td>
+<td>None</td>
+<td>yes</td>
+</tr>
+<tr class="row-odd"><td>htdocs</td>
+<td>the path to the htdocs folder</td>
+<td>None</td>
+<td>yes</td>
+</tr>
+<tr class="row-even"><td>templates</td>
+<td>the path to the template folder</td>
+<td>None</td>
+<td>yes</td>
+</tr>
+<tr class="row-odd"><td>natsourcepath</td>
+<td>path to the Natural sources (must be the root directory)</td>
+<td>None</td>
+<td>yes</td>
+</tr>
+<tr class="row-even"><td>port</td>
+<td>port on which the webserver should listen</td>
+<td>80</td>
+<td>no</td>
+</tr>
+<tr class="row-odd"><td>debug</td>
+<td>decide wether an error occurs to render a custom 500 page with the error message or a generic 500 error page</td>
+<td>false</td>
+<td>no</td>
+</tr>
+<tr class="row-even"><td>naterror</td>
+<td>the template that should be rendered when Natural error occurs (debug must set to true)</td>
+<td>None</td>
+<td>no</td>
+</tr>
+<tr class="row-odd"><td>ldaerror</td>
+<td>the template that should be rendered when error occurs while parsing the LDA (debug must set to true)</td>
+<td>None</td>
+<td>no</td>
+</tr>
+<tr class="row-even"><td>parsererror</td>
+<td>the template that should be rendered when error occurs while handling the template (debug must set to true)</td>
+<td>None</td>
+<td>no</td>
+</tr>
+<tr class="row-odd"><td>natparms</td>
+<td>parameter that will be passed through to Natural (the same as if you were calling Natural from the binary)</td>
+<td>None</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="route-configuration">
+<h2>Route configuration<a class="headerlink" href="#route-configuration" title="Permalink to this headline">¶</a></h2>
+<p>In the route configuration file you enter the Natural program which should run when a specific route is called.</p>
+<div class="section" id="id1">
+<h3>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;realHtml&gt;</span>
+    <span class="nt">&lt;route</span> <span class="na">path=</span><span class="s">&quot;notizen&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;programm&gt;</span>SHNOTIZ<span class="nt">&lt;/programm&gt;</span>
+        <span class="nt">&lt;alias&gt;&lt;/alias&gt;</span>
+        <span class="nt">&lt;return&gt;&lt;/return&gt;</span>
+        <span class="nt">&lt;library&gt;</span>TOMENGE<span class="nt">&lt;/library&gt;</span>
+    <span class="nt">&lt;/route&gt;</span>
+    <span class="nt">&lt;route</span> <span class="na">path=</span><span class="s">&quot;new_notiz&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;programm&gt;</span>STNOTIZ<span class="nt">&lt;/programm&gt;</span>
+        <span class="nt">&lt;library&gt;</span>TOMENGE<span class="nt">&lt;/library&gt;</span>
+    <span class="nt">&lt;/route&gt;</span>
+    <span class="nt">&lt;route</span> <span class="na">path=</span><span class="s">&quot;delete_notiz&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;programm&gt;</span>SDENOTIZ<span class="nt">&lt;/programm&gt;</span>
+        <span class="nt">&lt;library&gt;</span>TOMENGE<span class="nt">&lt;/library&gt;</span>
+    <span class="nt">&lt;/route&gt;</span>
+<span class="nt">&lt;/realHtml&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="route-tag">
+<h3>Route tag<a class="headerlink" href="#route-tag" title="Permalink to this headline">¶</a></h3>
+<p>The route tag takes exactly one parameter. The path attribute. That is the URL which is requested on the server without the first slash.</p>
+</div>
+<div class="section" id="explanation-route-childs">
+<h3>Explanation route childs<a class="headerlink" href="#explanation-route-childs" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="72%" />
+<col width="12%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">entry</th>
+<th class="head">explanation</th>
+<th class="head">default Value</th>
+<th class="head">required</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>program</td>
+<td>the Natural program that will be called</td>
+<td>None</td>
+<td>no</td>
+</tr>
+<tr class="row-odd"><td>library</td>
+<td>the library to logon</td>
+<td>None</td>
+<td>no</td>
+</tr>
+<tr class="row-even"><td>alias</td>
+<td>a file in the htdocs folder that will be delivered instead of calling the Natural program</td>
+<td>None</td>
+<td>no</td>
+</tr>
+<tr class="row-odd"><td>return</td>
+<td>a HTTP code that will be returned instead of a file from htdocs or calling a Natural program</td>
+<td>None</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="miniweb-usage">
+<h2>Miniweb usage<a class="headerlink" href="#miniweb-usage" title="Permalink to this headline">¶</a></h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-h</span></kbd></td>
+<td>display this help screen</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-v</span></kbd></td>
+<td>log status/error info</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-p</span></kbd></td>
+<td>specifiy http port [default 80]</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-r</span></kbd></td>
+<td>specify http document directory [default htdocs]</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-l</span></kbd></td>
+<td>specify log file</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-m</span></kbd></td>
+<td>specifiy max clients [default 32]</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-M</span></kbd></td>
+<td>specifiy max clients per IP</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-s</span></kbd></td>
+<td>specifiy download speed limit in KB/s [default: none]</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-n</span></kbd></td>
+<td>disallow multi-part download [default: allow]</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-d</span></kbd></td>
+<td>disallow directory listing [default ON]</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--environment</span></kbd></td>
+<td>environment to load [default: none]</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Webserver</a><ul>
+<li><a class="reference internal" href="#server-configuration">Server configuration</a><ul>
+<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#explanation-enviroment-tag">Explanation enviroment tag</a></li>
+<li><a class="reference internal" href="#explanation-enviroment-childs">Explanation enviroment childs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#route-configuration">Route configuration</a><ul>
+<li><a class="reference internal" href="#id1">Example</a></li>
+<li><a class="reference internal" href="#route-tag">Route tag</a></li>
+<li><a class="reference internal" href="#explanation-route-childs">Explanation route childs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#miniweb-usage">Miniweb usage</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="connector.html" title="previous chapter">Tomcat Connector</a></li>
+      <li>Next: <a href="natural.html" title="next chapter">Natural</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/webserver.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Tom Engemann.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/webserver.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

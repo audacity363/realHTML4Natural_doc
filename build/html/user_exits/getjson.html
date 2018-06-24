@@ -1,0 +1,170 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>GETJSONO &#8212; realHTML4Natural 1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Return Codes" href="returncodes.html" />
+    <link rel="prev" title="GENJSONO" href="genjsono.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="getjsono">
+<span id="id1"></span><h1>GETJSONO<a class="headerlink" href="#getjsono" title="Permalink to this headline">¶</a></h1>
+<p>With the user exit “getjsono” you can match a JSON structure to a natural structure.</p>
+<div class="section" id="example-lda">
+<h2>Example LDA<a class="headerlink" href="#example-lda" title="Permalink to this headline">¶</a></h2>
+<p>Name of the LDA: “USERLIST”</p>
+<div class="highlight-cobolfree"><div class="highlight"><pre><span></span><span class="mi">1 </span><span class="nv">input-get-user</span>
+    <span class="mi">2 </span><span class="nv">firstname</span> <span class="p">(</span><span class="nv">A</span><span class="p">)</span> <span class="kp">DYNAMIC</span>
+<span class="kp">   </span> <span class="mi">2 </span><span class="nv">lastname</span> <span class="p">(</span><span class="nv">A</span><span class="p">)</span> <span class="kp">DYNAMIC</span>
+</pre></div>
+</div>
+<p>JSON structure:</p>
+<div class="highlight-JSON"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;firstname&quot;</span><span class="p">:</span> <span class="s2">&quot;Tom&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;lastmame&quot;</span><span class="p">:</span> <span class="s2">&quot;Engemann&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-call">
+<h2>Example call<a class="headerlink" href="#example-call" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-cobolfree"><div class="highlight"><pre><span></span><span class="kr">call </span><span class="s1">&#39;interface4&#39;</span> <span class="nv">varptr</span> <span class="s1">&#39;getjsono&#39;</span> <span class="s1">&#39;input-get-user@USERLIST&#39;</span> <span class="nv">REALHTML_SETTINGS</span>
+    <span class="nv">input-get-user</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="behavior">
+<h2>Behavior<a class="headerlink" href="#behavior" title="Permalink to this headline">¶</a></h2>
+<p>Variables get matches based on there name and level. When a natural variable is not found in the JSON structure it gets ignored. The same applies the other way around.</p>
+<p>Xarrays gets automaticly expanded. This function checks the type and the length of the variable. Only if everything fit the value gets copied into the natural variable. Otherwise a return code != 0 is returned. See section <a class="reference internal" href="returncodes.html#returncodes"><span class="std std-ref">Return Codes</span></a>. When a JSON structure contains a float the natural variable must be a (F8) type.</p>
+</div>
+<div class="section" id="parameter">
+<h2>Parameter<a class="headerlink" href="#parameter" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="11%" />
+<col width="85%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>position</td>
+<td>name in example</td>
+<td>explanation</td>
+</tr>
+<tr class="row-even"><td>0</td>
+<td>varptr</td>
+<td>The internal varptr variable from the framework. See <a class="reference internal" href="../natural.html#pda"><span class="std std-ref">Parameter Data Area</span></a>.</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td><a class="reference external" href="mailto:'input-get-user&#37;&#52;&#48;USERLIST">‘input-get-user<span>&#64;</span>USERLIST</a>’</td>
+<td>Format string with the natural structure, library name and LDA name. The library name is optional. When is id not set the current library is the default one. &lt;nat-structure-name&gt;&#64;&lt;library-name&gt;.&lt;lda-name&gt;</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>REALHTML_SETTINGS</td>
+<td>Its just the internal variable which was given by the PDA. See <a class="reference internal" href="../natural.html#pda"><span class="std std-ref">Parameter Data Area</span></a>.</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>input-get-user</td>
+<td>That’s the actual head of the group</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">GETJSONO</a><ul>
+<li><a class="reference internal" href="#example-lda">Example LDA</a></li>
+<li><a class="reference internal" href="#example-call">Example call</a></li>
+<li><a class="reference internal" href="#behavior">Behavior</a></li>
+<li><a class="reference internal" href="#parameter">Parameter</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="genjsono.html" title="previous chapter">GENJSONO</a></li>
+      <li>Next: <a href="returncodes.html" title="next chapter">Return Codes</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/user_exits/getjson.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Tom Engemann.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../_sources/user_exits/getjson.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
