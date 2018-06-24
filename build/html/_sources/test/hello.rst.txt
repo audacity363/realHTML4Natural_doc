@@ -1,4 +1,0 @@
-Test Page
-=========
-
-Dies ist ein Test

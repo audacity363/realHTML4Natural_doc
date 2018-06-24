@@ -14,3 +14,8 @@ Content:
     :maxdepth: 3
 
     terminology
+    functionality
+    natural
+    session
+    installation
+    configuration
